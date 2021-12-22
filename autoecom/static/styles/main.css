@@ -37,7 +37,13 @@ h2 {
     }
 }
 
-
+.section-header {
+    font-size: 36px;
+    color: #283d50;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+}
 /**********************************/
 /******** Back to Top CSS *********/
 /**********************************/

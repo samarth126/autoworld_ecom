@@ -3,4 +3,13 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return render(request, 'main.html')
+    return render(request, 'index.html')
+
+
+def product(request):
+    return render (request, 'product.html')
+
+
+def cart(request):
+    return render (request, 'cart.html')
+
