@@ -13,3 +13,8 @@ def product(request):
 def cart(request):
     return render (request, 'cart.html')
 
+
+
+def user_dash(request):
+    return render (request, 'user_profile/dashboard.html')
+
