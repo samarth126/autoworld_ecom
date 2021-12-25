@@ -3,8 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    con=False;
-    return render(request, 'index.html', {'con':con})
+    con=True;
+    loop=range(1,8)
+    
+    return render(request, 'index.html', {'con':con, 'loop':loop})
 
 
 def product(request):
