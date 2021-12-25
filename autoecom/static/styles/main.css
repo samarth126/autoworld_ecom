@@ -9,7 +9,7 @@ body {
 }
 
 a {
-    color: #FF6F61;
+    color: #DA0037;
 }
 .prosize{
     height: 300px;
@@ -56,7 +56,7 @@ h2 {
 .back-to-top {
     position: fixed;
     display: none;
-    background: #FF6F61;
+    background: #DA0037;
     color: #ffffff;
     width: 40px;
     height: 40px;
@@ -117,14 +117,14 @@ h2 {
 .btn {
     color: #EC255A;
     background: #ffffff;
-    border: 1px solid #FF6F61;
+    border: 1px solid #DA0037;
 }
 
 .btn:hover,
 .btn:active,
 .btn:focus {
     color: #ffffff;
-    background: #FF6F61;
+    background: #DA0037;
     box-shadow: none;
 }
 
