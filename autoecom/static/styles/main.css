@@ -3,9 +3,9 @@
 /**********************************/
 body {
     color: #353535;
-    font-family: 'Open Sans', sans-serif;
+    font-family: lato,sans-serif;
     font-weight: 400;
-    background: #f3f6ff;
+    background: #ffffff;
 }
 
 a {
@@ -32,8 +32,10 @@ h2 {
 
 @media(min-width: 992px) {
     .container-fluid {
-        padding-right: 60px;
-        padding-left: 60px;
+        margin-top: 0px;
+        padding-right: 10px;
+        padding-left: 1px;
+        
     }
 }
 
@@ -109,7 +111,7 @@ h2 {
 }
 
 .btn {
-    color: #FF6F61;
+    color: #EC255A;
     background: #ffffff;
     border: 1px solid #FF6F61;
 }
@@ -209,7 +211,7 @@ h2 {
 .top-bar {
     padding: 3px 0;
     font-size: 14px;
-    color: #FF6F61;
+    color: #F5F5F5;
     background: #000000;
 }
 
@@ -260,7 +262,7 @@ h2 {
     margin-top: 0;
     border: 0;
     border-radius: 0;
-    background: #FF6F61;
+    background: #DA0037;
 }
 
 .nav .dropdown-menu a.active {
@@ -271,7 +273,7 @@ h2 {
 @media (min-width: 768px) {
     .nav,
     .nav .navbar {
-        background: #FF6F61 !important;
+        background: #DA0037 !important;
     }
     
     .nav .navbar-brand {
@@ -315,8 +317,8 @@ h2 {
 /**********************************/
 .bottom-bar {
     padding: 15px 0;
-    background: #ffffff;
-    margin-bottom: 30px;
+    background: #04293A;
+    margin-bottom: 1px;
 }
 
 .bottom-bar .logo {
