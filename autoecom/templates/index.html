@@ -92,6 +92,32 @@
   <br>
   <br>
 
+
+  <div class="container">
+               
+    <div class="product">
+      <div class="section-header">
+          <h1>Search by Categories</h1>
+      </div>
+
+    <div class="row">
+
+      
+
+        {% for i in '0123456789'|make_list %}
+
+        <div class="col-md-3">
+          <div class="shadow-lg p-3 mb-5 bg-white rounded">Card <br> no. will be -{{ forloop.counter }}</div>
+        </div>
+
+           {% endfor %} 
+
+
+
+    </div>    
+    </div>
+  
+
     <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
@@ -100,7 +126,12 @@
           </div>
       </div>    
       </div>
-      
+
+<br>
+<br>
+<br>
+
+     
 
 
 {% endblock content %}
