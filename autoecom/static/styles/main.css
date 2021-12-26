@@ -368,6 +368,7 @@ h2 {
 .bottom-bar .user {
     font-size: 0;
     text-align: right;
+    padding: inherit;
 }
 
 .bottom-bar .user .wishlist {
@@ -376,13 +377,13 @@ h2 {
 
 .bottom-bar .user .cart i,
 .bottom-bar .user .wishlist i {
-    color: #FF6F61;
+    color: #000000;
 }
 
 .bottom-bar .user .cart span,
 .bottom-bar .user .wishlist span {
-    color: #FF6F61;
-    font-size: 15px;
+    color: #000000;
+    font-size: 20px;
 }
 
 .bottom-bar .user .cart:hover i,
@@ -927,6 +928,7 @@ h2 {
     position: relative;
     width: 100%;
     padding: 30px 0;
+    margin-left: 20px;
 }
 
 .product-view .product-view-top {
