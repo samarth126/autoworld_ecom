@@ -25,7 +25,15 @@ def product(request):
 def cart(request):
     return render(request, 'cart.html')
 
+def checkout(request):
+    return render(request, 'checkout.html')
 
+# def login(request):
+    
+#     login(request)
+#     return redirect('home')
+    
+   
 
 def user_dash(request):
     return render (request, 'user_profile/dashboard.html')
@@ -77,7 +85,7 @@ def loginr(request):
    
     # return render(request,'loginr.html', context)
     
-    return render(request, 'loginform.html')
+    return render(request, 'login.html')
 
 def logoutUser(request):
     logout(request)
