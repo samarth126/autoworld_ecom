@@ -41,6 +41,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'autoecom.urls'
+AUTH_USER_MODEL = 'base.User'
 
 TEMPLATES = [
     {

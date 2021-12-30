@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>E Store - eCommerce HTML Template</title>
+    <title>AUTOWORLD bharat auto solutions</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="eCommerce HTML Template Free Download" name="keywords">
     <meta content="eCommerce HTML Template Free Download" name="description">
@@ -28,6 +28,7 @@
 
 <body>
 {% include 'nav.html' %}
+
 <div id="google_translate_element"></div>
 <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -42,7 +43,13 @@
 		cb=googleTranslateElementInit">
         </script>
 
-
+<ul class="messages">
+    {% if messages %}
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
 {% block content %}
 
 
