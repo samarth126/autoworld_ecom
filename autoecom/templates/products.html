@@ -4,12 +4,12 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="{% static 'img/banner2.png' %}" alt="First slide" >
+            <img class="d-block w-100" src="{% static 'img/banner2.png' %}" alt="First slide">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="{% static 'img/banner2.png' %}" alt="Second slide">
         </div>
-       
+
     </div>
 </div>
 <div class="product-view">
@@ -20,13 +20,14 @@
                     <div class="col-md-12">
                         <div class="product-view-top">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="product-search">
-                                        <input type="email" value="Search">
-                                        <button><i class="fa fa-search"></i></button>
-                                    </div>
+                                <div class="col-md-12">
+                          
+                            <form method="get">
+                                {{ myFilter.form }}
+                                <input type="submit"/>
+                            </form>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="product-short">
                                         <div class="dropdown">
                                             <div class="dropdown-toggle" data-toggle="dropdown">Product short by</div>
@@ -37,52 +38,50 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="product-price-range">
-                                        <div class="dropdown">
-                                            <div class="dropdown-toggle" data-toggle="dropdown">Product price range
-                                            </div>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item">$0 to $50</a>
-                                                <a href="#" class="dropdown-item">$51 to $100</a>
-                                                <a href="#" class="dropdown-item">$101 to $150</a>
-                                                <a href="#" class="dropdown-item">$151 to $200</a>
-                                                <a href="#" class="dropdown-item">$201 to $250</a>
-                                                <a href="#" class="dropdown-item">$251 to $300</a>
-                                                <a href="#" class="dropdown-item">$301 to $350</a>
-                                                <a href="#" class="dropdown-item">$351 to $400</a>
-                                                <a href="#" class="dropdown-item">$401 to $450</a>
-                                                <a href="#" class="dropdown-item">$451 to $500</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> -->
+                               
                             </div>
                         </div>
                     </div>
-                    {% for i in pro %}
+                    {% for p in product %}
+                    
 
                     <div class="col-md-4">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="#">{{i}}</a>
-                              
+                                <a href="#">{{p}}</a>
+
                             </div>
+
+                            {% for image in p.product_image.all %}
+                            {% if image.is_feature %}
                             <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="{% static 'img/pro1.jpg' %}" alt="Product Image">
+                                <a href="{% url 'product' pk=p.id %}">
+                                    <img src="{{ image.image.url }}" alt="Product Image" height="200px" width="50px">
                                 </a>
-                              
+
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            <div>
+                                <p>Company: {{p.manufacturer}}</p>
+                                <p>Model:{{p.vmodel}}</p>
                             </div>
                             <div class="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>&#8377</span>{{p.regular_price}}</h3>
+
+                                <button data-product="{{p.id}}" data-action="add" class="btn update-cart">
+
                                 <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+
+                                </button>
                             </div>
                         </div>
                     </div>
+
                     {% endfor %}
-                    
+                   
+
 
                 </div>
 
@@ -124,14 +123,14 @@
                                 <a class="nav-link" href="#"><i class="fa fa-mobile-alt"></i>Bumber</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-microchip"></i>dashboard 
-                                    </a>
+                                <a class="nav-link" href="#"><i class="fa fa-microchip"></i>dashboard
+                                </a>
                             </li>
                         </ul>
                     </nav>
                 </div>
 
-                
+
 
                 <div class="sidebar-widget brands">
                     <h2 class="title">Our Brands</h2>
@@ -181,4 +180,3 @@
     </div>
 </div>
 {% endblock content %}
-

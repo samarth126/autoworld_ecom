@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+{% if page == 'model' %}
+<div class="container">
+
+    <div class="product">
+        <div class="section-header">
+            <h1>Search by Categories</h1>
+        </div>
+
+        <div class="row">
+
+
+
+            {% for i in vmodel %}
+
+            <div class="col-md-3">
+                <a href="{% url 'myear' slug=i.slug pk=i.id %}">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">{{i}}</div>
+                </a>
+            </div>
+
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+
+{% else %}
+
+
+
+ 
+    <div class="container">
+    
+        <div class="product">
+            <div class="section-header">
+                <h1>Search by Categories</h1>
+            </div>
+    
+            <div class="row">
+    
+    
+    
+                {% for i in year %}
+    
+                <div class="col-md-3">
+                    <a href="{% url 'myear' slug=i.slug pk=i.id %}">
+                        <div class="shadow-lg p-3 mb-5 bg-white rounded">{{ i }}</div>
+                    </a>
+                </div>
+    
+                {% endfor %}
+                    {% for i in pro %}
+                    
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{i}}</a>
+                    
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="#" alt="Product Image">
+                                </a>
+                    
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>99</h3>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+    
+    
+    
+            </div>
+        </div>
+    
+
+
+{% endif %}
+
+{% endblock %}
