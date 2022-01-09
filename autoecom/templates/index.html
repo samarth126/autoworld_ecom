@@ -104,14 +104,17 @@
 
       
 
-        {% for i in '0123456789'|make_list %}
+        {% for cateorie in cateories %}
 
         <div class="col-md-3">
           
           <div class="shadow-lg p-3 mb-5 bg-white rounded">
-           <img src="{% static 'img/slider.png' %}" width="100px" height="80px">
+           <img src="{{cateorie.image.url}}" width="100px" height="80px">
 
-            <br> no. will be -{{ forloop.counter }}
+            <br>
+            <br>
+             {{cateorie.name}}
+            <!-- <br> {{cateorie.name}} -->
           </div>
         </div>
 

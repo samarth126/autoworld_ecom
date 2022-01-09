@@ -30,11 +30,12 @@ def home(request):
         
     
     products = Product.objects.all()
+    cateories = Category.objects.all()
    
     loop=range(1,8)
     # message = Message.objects.all()
     
-    return render(request, 'index.html', {'loop':loop,'products':products,'cartItems':cartItems })
+    return render(request, 'index.html', {'loop':loop,'products':products,'cartItems':cartItems, 'cateories':cateories })
 
 def cart(request):
     if request.user.is_authenticated:
@@ -136,9 +137,14 @@ def update_acc(request):
 
 
 def product(request, pk=None):
-    product=Product.objects.prefetch_related("product_image").filter(id=pk)
-    context={'pro':product}
-    return render(request, 'product.html', context)
+     if request.user.is_authenticated:
+        customer = request.user.customer
+        cartItems= nav(HttpRequest, customer)
+     else:
+        cartItems=0
+     product=Product.objects.prefetch_related("product_image").filter(id=pk)
+     context={'pro':product,'cartItems':cartItems}
+     return render(request, 'product.html', context)
 
 
 
@@ -226,7 +232,10 @@ def products(request ):
 #     context={'Vtype':vehicletype, 'manu':manu}
     
 #     return render(request, 'cat.html', context)
-  
+
+
+
+
 
 def type(request, slug=None,  *args, **kwargs):
     if slug is not None:

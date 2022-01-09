@@ -26,10 +26,12 @@
 
 
                                 {% for item in items %}
+
+                            
                                 <tr>
                                     <td>
                                         <div class="img">
-                                            <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
+                                            <a href="#"><img src="{{item.Product.image.image.url}}" alt="Image"></a>
                                             <p>{{item.Product.name}}</p>
                                         </div>
                                     </td>

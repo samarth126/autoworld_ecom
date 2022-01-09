@@ -2416,7 +2416,7 @@ h2 {
 .footer {
     position: relative;
     padding: 30px 0 0 0;
-    background: #ffffff;
+    background: lightgray;
 }
 
 .footer .footer-widget {
