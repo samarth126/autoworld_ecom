@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -65,6 +66,10 @@ def cart(request):
 
 
 
+
+
+
+
 def checkout(request):
      if request.user.is_authenticated:
         customer = request.user.customer
@@ -75,6 +80,11 @@ def checkout(request):
         order ={'get_cart_total':0, 'get_cart_items':0}
      context={'items':items, 'order':order}
      return render(request, 'checkout.html', context)
+
+
+
+
+
 
 def updateItem(request):
     data = json.loads(request.body)
@@ -106,6 +116,8 @@ def updateItem(request):
 
 
     return JsonResponse('Item was added', safe=False)
+
+
 
 
 def user_dash(request):
@@ -274,6 +286,9 @@ def type(request, slug=None,  *args, **kwargs):
     
     return render(request, 'type.html', context)
       
+
+
+
 def brand(request, slug=None, pk=None, *args, **kwargs):
     
     print(slug)
@@ -287,6 +302,9 @@ def brand(request, slug=None, pk=None, *args, **kwargs):
     
     return render(request, 'brand.html', context)
 
+
+
+
 def model(request, slug=None, pk=None, *args, **kwargs):
     page='model'
     vmodel=CarModel.objects.filter(manufacturer=pk)
@@ -294,6 +312,10 @@ def model(request, slug=None, pk=None, *args, **kwargs):
     context={'vmodel':vmodel, 'page':page}
     
     return render(request, 'models.html', context)
+
+
+
+
 
 def myear(request, slug=None, pk=None, *args, **kwargs):
     
@@ -307,6 +329,26 @@ def myear(request, slug=None, pk=None, *args, **kwargs):
     
     
     return render(request, 'models.html', {'year': ye , 'pro':products})
+
+
+
+def category(request, slug=None):
+    cate=Category.objects.get(slug=slug)
+    products=Product.objects.filter(category=cate.id)
+    print (slug)
+    return render(request, 'category.html', {'pro':products})
+
+
+
+
+
+
+
+
+
+
+
+
 def register(request):
    
     form = RForm()

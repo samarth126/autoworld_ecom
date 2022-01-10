@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+
+    <div class="product">
+        <div class="section-header">
+            <h1>Search by Categories</h1>
+        </div>
+
+        <div class="row">
+
+
+
+
+            {% for i in pro %}
+                    
+            <div class="product-item">
+                <div class="product-title">
+                    <a href="#">{{i}}</a>
+
+                </div>
+
+                {% for image in i.product_image.all %}
+                {% if image.is_feature %}
+                <div class="product-image">
+                    <a href="{% url 'product' pk=i.id %}">
+                        <img src="{{ image.image.url }}" alt="Product Image" height="200px" width="50px">
+                    </a>
+
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div>
+                    <p>Company: {{i.manufacturer}}</p>
+                    <p>Model:{{i.vmodel}}</p>
+                </div>
+                <div class="product-price">
+                    <h3><span>&#8377</span>{{i.regular_price}}</h3>
+
+                    <button data-product="{{i.id}}" data-action="add" class="btn update-cart">
+
+                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+            {% endfor %}
+
+        </div>
+
+
+        </div>
+    </div>
+    
+
+    {% endblock %}

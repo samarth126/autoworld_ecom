@@ -7,11 +7,11 @@
                             </div>
 
                             <div class="row align-items-center product-slider product-slider-4">
-                                {% for i in loop %}
+                                {% for product in products %}
                                 <div class="col-lg-3">
                                     <div class="product-item">
                                         <div class="product-title">
-                                            <a href="#">gear merc</a>
+                                            <a href="#">{{product.title}}</a>
                                             <div class="ratting">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -20,14 +20,21 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                         </div>
+
+
+                                        {% for image in product.product_image.all %}
+                                        {% if image.is_feature %}
                                         <div class="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="{% static 'img/pro1.jpg' %}" alt="Product Image" width="50" height="250">
+                                            <a href="{% url 'product' pk=product.id %}">
+                                                <img src="{{ image.image.url }}" alt="Product Image" height="200px" width="50px">
                                             </a>
-                                            
+                        
                                         </div>
+                                        {% endif %}
+                                        {% endfor %}
+                               
                                         <div class="product-price">
-                                            <h3><span>&#8377</span>69</h3>
+                                            <h3><span>&#8377;</span>{{product.regular_price}}</h3>
                                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                         </div>
                                     </div>
