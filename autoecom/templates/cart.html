@@ -26,10 +26,18 @@
 
 
                                 {% for item in items %}
+
+                                
+                               
+                               
                                 <tr>
                                     <td>
                                         <div class="img">
-                                            <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
+                                            {% for image in item.Product.product_image.all %}
+                                            {% if image.is_feature %}
+                                            <a href="{% url 'product' pk=item.Product.id %}"><img src="{{ image.image.url }}" alt="Image"></a>
+                                            {% endif %}
+                                            {% endfor %}
                                             <p>{{item.Product.name}}</p>
                                         </div>
                                     </td>
