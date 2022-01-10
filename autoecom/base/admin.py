@@ -7,6 +7,7 @@ from django.contrib.admin.filters import RelatedOnlyFieldListFilter
 from .models import *
 
 admin.site.register(Category, MPTTModelAdmin)
+
 admin.site.register(User)
 admin.site.register(Customer)
 admin.site.register(shipping_address)
