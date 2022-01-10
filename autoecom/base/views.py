@@ -168,10 +168,15 @@ def product(request, pk=None):
     
     
 def products(request ):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        cartItems= nav(HttpRequest, customer)
+    else:
+        cartItems=0
     pro=Product.objects.prefetch_related("product_image").all()
     myFilter=ProductFilter(request.GET, queryset=pro)
     pro=myFilter.qs
-    context={'product':pro, 'myFilter':myFilter}
+    context={'product':pro, 'myFilter':myFilter,'cartItems':cartItems}
     print(context)
     
     
