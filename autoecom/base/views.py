@@ -20,9 +20,22 @@ def nav(request,customer):
     cartItems = order.get_cart_items
     return cartItems
 
-# Create your views here.
+#
+# 
+#    if request.user.is_authenticated:
+#         us= request.user
+#         cust, created = Customer.objects.get_or_create(user=us)
+#         cartItems= nav(HttpRequest, cust)
+#         # cust = request.user.customer
+#         # f = shipping_address.objects.get(Customer=cust.id)
+#         orders = Order.objects.filter(Customer=cust, status=True)
+#         itemes = Order_item.objects.all()
+#     else:
+#             return redirect('loginr')
 def home(request):
     if request.user.is_authenticated:
+        us= request.user
+        cust, created = Customer.objects.get_or_create(user=us)
         customer = request.user.customer
         cartItems= nav(HttpRequest, customer)
     else:
