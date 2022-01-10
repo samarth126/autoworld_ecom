@@ -110,22 +110,12 @@
                     <h2 class="title">Category</h2>
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
+                            {% for cateorie in cateories%}
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-female"></i>GEAR</a>
+                                <a class="nav-link" href="{% url 'category' slug=cateorie.slug %}"><i class="fa fa-female"></i>{{cateorie}}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Break</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Head lighs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-mobile-alt"></i>Bumber</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-microchip"></i>dashboard
-                                </a>
-                            </li>
+                            {% endfor %}
+                      
                         </ul>
                     </nav>
                 </div>

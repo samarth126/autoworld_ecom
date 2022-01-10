@@ -168,7 +168,8 @@ def product(request, pk=None):
      else:
         cartItems=0
      product=Product.objects.prefetch_related("product_image").filter(id=pk)
-     context={'pro':product,'cartItems':cartItems}
+     cateories = Category.objects.all()
+     context={'pro':product,'cartItems':cartItems,'cateories':cateories}
      return render(request, 'product.html', context)
 
 
@@ -201,7 +202,8 @@ def products(request ):
     pro=Product.objects.prefetch_related("product_image").all()
     myFilter=ProductFilter(request.GET, queryset=pro)
     pro=myFilter.qs
-    context={'product':pro, 'myFilter':myFilter,'cartItems':cartItems}
+    cateories = Category.objects.all()
+    context={'product':pro, 'myFilter':myFilter,'cartItems':cartItems,'cateories':cateories}
     print(context)
     
     
