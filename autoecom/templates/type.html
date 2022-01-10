@@ -16,12 +16,14 @@
             {% for i in Vtype %}
 
             <div class="col-md-3">
-                <a href="{% url 'brand' slug=i.slug  pk=i.id %}"><div class="shadow-lg p-3 mb-5 bg-white rounded">{{i}}</div></a>
+                <a href="{% url 'brand' slug=i.slug  pk=i.id %}">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">{{i}}</div></a>
             </div>
+      
 
             {% endfor %}
 
-
+        </div>
 
 
         </div>
