@@ -880,6 +880,9 @@ h2 {
 /**********************************/
 .product-item {
     position: relative;
+   
+    padding: 7px;
+    
 }
 
 .product-item .product-title {
@@ -908,12 +911,14 @@ h2 {
 .product-item .product-title .ratting i {
     font-size: 15px;
     color: #FF6F61;
+
 }
 
 .product-item .product-content .price span {
     margin-left: 12px;
     text-decoration: line-through;
     font-weight: 700;
+    
     color: #999999;
 }
 
@@ -976,7 +981,7 @@ h2 {
     text-align: center;
     color: #ffffff;
     
-    border: 1px solid #ffffff;
+    border: 3px solid #000000;
     border-radius: 4px;
     transition: all .3s;
     margin-top: 50px;
@@ -1019,8 +1024,9 @@ h2 {
 .product-item .product-price .btn {
     float: right;
     border: none;
-    color: #000000;
-    background: #da0037;
+    color: #ffffff;
+    background: #26385A;
+    font-size: 13px;
 }
 
 

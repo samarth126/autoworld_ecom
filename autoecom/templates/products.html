@@ -47,7 +47,7 @@
                     
 
                     <div class="col-md-4">
-                        <div class="product-item">
+                        <div class=" shadow-sm bg-white rounded product-item">
                             <div class="product-title">
                                 <a href="#">{{p}}</a>
 
@@ -64,18 +64,31 @@
                             {% endif %}
                             {% endfor %}
                             <div>
-                                <p>Company: {{p.manufacturer}}</p>
-                                <p>Model:{{p.vmodel}}</p>
+                                <p style="font-size: 14px; "><span style="color: cornflowerblue;">Company: </span>{{p.manufacturer}}
+                                    <br>
+                                <span style="color: cornflowerblue;">Model: </span>{{p.vmodel}}</p>
                             </div>
                             <div class="product-price">
-                                <h3><span>&#8377</span>{{p.regular_price}}</h3>
 
-                                <button data-product="{{p.id}}" data-action="add" class="btn update-cart">
+                                <span>&#8377</span>{% if p.descount_price %}
+                                <del> {{p.descount_price}}</del>
+                                    {% endif %}
 
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    {{p.regular_price}}
+                               
+                                    <button data-product="{{p.id}}" data-action="add" class="btn update-cart">
+                                    
+                                        <i class="fa fa-shopping-cart"></i>Add to cart
+                                    
+                                    </button>
+                                    
 
-                                </button>
+                             
+                               
+
+                               
                             </div>
+                            <br>
                         </div>
                     </div>
 
@@ -84,6 +97,9 @@
 
 
                 </div>
+                <br>
+                <br>
+                <br>
 
                 <!-- Pagination Start -->
                 <div class="col-md-12">
