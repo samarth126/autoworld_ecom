@@ -130,8 +130,49 @@
 
     </div>    
     </div>
+  </div>
+
+    <br>
+    <br>
+    <br>
+
+
+  <div class="container-fluid">
+    <div class="product">
+      <div class="section-header">
+          <h1>Categories</h1>
+      </div>
+    <ul class="cards">
+      <div class="row">
+        {% for cateorie in cateories %}
+          <div class="col-md-3">
+      
+          <li>
+            <a href="{% url 'category' slug=cateorie.slug %}" class="card">
+              <img src="{{cateorie.image.url}}" class="card__image" alt="" />
+              <div class="card__overlay">
+                <div class="card__header">
+                  <!-- <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                      -->
+                  <!-- <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" /> -->
+                  <div class="card__header-text">
+                    <h3 class="card__title"> {{cateorie.name}}</h3>   
+                  </div>
+                </div>
+                <p class="card__description">...</p>
+              </div>
+            </a>      
+          </li>
+      
+      </div>
+      {% endfor %}
+      </div>
+        </ul>
+  </div>
   
 
+  <br>
+  <br>
+  <br>
     <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
