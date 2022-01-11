@@ -399,3 +399,16 @@ def loginr(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+
+
+
+
+
+def a(request):
+    loop=range(1,8)
+
+    
+    return render(request, 'a.html', {'loop':loop})
+
+

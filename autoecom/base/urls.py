@@ -21,6 +21,7 @@ urlpatterns = [
     path('update_acc/',views.update_acc, name="update_acc"),
     # path('cat/<slug:slug>/', views.cat, name='cat'),
     path('type/', views.type, name='type'),
+    path('a/', views.a, name='a'),
 
     path('category/<slug:slug>/', views.category, name='category'),
 
