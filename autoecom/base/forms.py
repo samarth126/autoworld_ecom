@@ -7,4 +7,4 @@ from django.contrib.auth.forms import UserCreationForm
 class RForm(UserCreationForm):
     class Meta:
         model = get_user_model()
-        fields= ['email', 'phone_no']
+        fields= ['email', 'phone_no','password1','password2']

@@ -35,7 +35,13 @@
                                
                                         <div class="product-price">
                                             <h3><span>&#8377;</span>{{product.regular_price}}</h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+
+                                            <button data-product="{{product.id}}" data-action="add" class="btn update-cart">
+                                    
+                                                <i class="fa fa-shopping-cart"></i>Add to cart
+                                            
+                                            </button>
+                                   
                                         </div>
                                     </div>
                                 </div>
