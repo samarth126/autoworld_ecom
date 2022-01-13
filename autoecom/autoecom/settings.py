@@ -8,6 +8,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_REDIRECT_URL = 'home'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 ACCOUNT_FORMS = {'signup': 'base.forms.RForm'}
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
