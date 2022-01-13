@@ -6,8 +6,6 @@
 
 <div class="container">
     <div class="section-header">
-        
-<h1> Product Page</h1>
 
     </div>
     <div class="row">
@@ -15,7 +13,8 @@
     </div>
 </div>
 
-
+<br>
+<br>
 
        
         <!-- Product Detail Start -->
@@ -25,8 +24,10 @@
                     <div class="col-lg-12">
                     {% for p in pro %}
                         <div class="product-detail-top">
-                            <div class="row align-items-center">
-                                <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-1"></div>
+
+                                <div class="col-md-3">
                                
                                  
                                     <div class="product-slider-single normal-slider">
@@ -48,6 +49,7 @@
                                     
                                    
                                 </div>
+                                <div class="col-md-1"></div>
 
                                 <div class="col-md-4">
                                     <div class="title" ><h2>{{p}}</h2></div>
@@ -57,30 +59,65 @@
                                        
                                         <div class="price">
                                             <h4>Price:</h4>
-                                            <p>${{p.regular_price}} </p>
+                                            <p>&#8377; {{p.regular_price}} </p>
                                         </div>
                                        
                                         <div class="p-size">
-                                            <h4>Size:</h4>
+                                            <h4>Brand:</h4>
                                             <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn">S</button>
-                                                <button type="button" class="btn">M</button>
-                                                <button type="button" class="btn">L</button>
-                                                <button type="button" class="btn">XL</button>
+                                                <h6>Bosh</h6>
+
+                                            <!-- <ul>
+                                                <li><b>brand</b>bosh</li>
+                                                <li>maruti</li>
+                                                <li>maruti-800</li>
+                                            </ul> -->
                                             </div> 
                                         </div>
-                                        <div class="p-color">
-                                            <h4>Color:</h4>
+                                        <div class="p-size">
+                                            <h4>Vehicle:</h4>
                                             <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn">White</button>
-                                                <button type="button" class="btn">Black</button>
-                                                <button type="button" class="btn">Blue</button>
+                                                <h6>Bosh</h6>
+
+                                                
                                             </div> 
                                         </div>
+
+
+                                        <div class="p-size">
+                                            <h4>Model:</h4>
+                                            <div class="btn-group btn-group-sm">
+                                                <h6>Maruti 800</h6>
+
+                                                
+                                            </div> 
+                                        </div>
+
+
+                                        <div class="p-size">
+                                            <h4>Year:</h4>
+                                            <div class="btn-group btn-group-sm">
+                                                <h6>2019</h6>
+
+                                                
+                                            </div> 
+                                        </div>
+                         
+<br>
+<style>
+    .ss{
+        background-color: #26385A;
+        color:#ffffff;
+        border: black;
+    }
+</style>
                                         <div class="action">
-                                            <button data-product="{{p.id}}" data-action="add" class="btn update-cart">
-                                            <i class="fa fa-shopping-cart"></i>Add to Cart
+                                     <button data-product="{{p.id}}" data-action="add" class="btn ss update-cart">
+                                    
+                                                <i class="fa fa-shopping-cart"></i> Add to cart
+                                            
                                             </button>
+                                          
 
                                         </div>
                                     </div>
@@ -92,7 +129,7 @@
                                             <ul class="navbar-nav">
                                                 {% for cateorie in cateories%}
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'category' slug=cateorie.slug %}"><i class="fa fa-female"></i>{{cateorie}}</a>
+                                                    <a class="nav-link" href="{% url 'category' slug=cateorie.slug %}"><i class="fas fa-cogs"></i>{{cateorie}}</a>
                                                 </li>
                                                 {% endfor %}
                                             </ul>
