@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    Login to Autoparts with 
+ 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">GOOGLE +</h5>
+    <p class="card-text text-info">LOGIN WITH GOOGLE</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-warning">Continue</button>
+    </form>
+  </div>
+ 
+</div>
+
+<br>
+<br>
+{% endblock %}
