@@ -72,15 +72,42 @@ def cart(request):
 
 def checkout(request):
      if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(Customer=customer, status=False)
+        customers = request.user.customer
+        order, created = Order.objects.get_or_create(Customer=customers, status=False)
         items = order.order_item_set.all()
      else:
         items =[]
         order ={'get_cart_total':0, 'get_cart_items':0}
-     context={'items':items, 'order':order}
+     context={'customers':customers, 'items':items, 'order':order}
      return render(request, 'checkout.html', context)
 
+
+
+def update_checkout(request):
+    if request.user.is_authenticated:
+        us = request.user
+        customers = request.user.customer
+        order = Order.objects.get(Customer=customers, status=False)
+        if request.method=="POST":
+            address=request.POST.get('address')
+            country=request.POST.get('country')
+            city=request.POST.get('city')
+            state=request.POST.get('state')
+            zipcode=request.POST.get('zipcode')
+
+            print(order.get_cart_total)
+            print(country)
+            en=shipping_address(Order=order,Customer=customers,country=country,city=city,state=state,zipcode=zipcode,address=address)
+            en.save()
+            anni=Order.objects.filter(Customer=customers).update(price=order.get_cart_total, status=True)
+
+            # cust=Customer.objects.filter(user=us).update(first_name=fname, last_name=lname)
+            # en=cust(first_name=fname, last_name=lname)
+            return redirect('home')
+
+
+    context={}
+    return render(request, 'checkout.html', context)
 
 
 
