@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+
+
+{% block content %}
+
+
+<article class="card-body mx-auto shadow-lg bg-white rounded" style="max-width: 400px;">
+  <h4 class="card-title mt-3 text-center">Create your account</h4>
+  <p class="text-center">Get started with your free account</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"> {{form.email.label}}	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;</span> -->
+              {{form.email.label}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </div>
+            <!-- <input name="email" class="form-control" placeholder="Email address" type="email" required>
+                       -->
+          
+            {{form.email}}
+          </div> <!-- form-group// -->
+          
+          
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"> 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;</span>
+                           -->
+              {{form.phone_no.label}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </div>
+            <!-- <input class="form-control" name="password" placeholder="password" type="password">
+                       -->
+          
+            {{form.phone_no}}
+          </div> <!-- form-group// -->
+          
+          
+          
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text">  {{form.password1.label}}	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; 	&nbsp;</span> -->
+              {{form.password1.label}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </div>
+            <!-- <input class="form-control" name="password" placeholder="password" type="password">
+                       -->
+          
+            {{form.password1}}
+          </div> <!-- form-group// -->
+          
+          
+          
+          
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"> </span> -->
+              Confirm password &nbsp;
+            </div>
+            <!-- <input class="form-control" name="password" placeholder="password" type="password">
+                       -->
+          
+            {{form.password2}}
+          </div> <!-- form-group// -->
+          
+          
+          
+          
+          
+          
+          
+          
+          <p class="divider-text">
+            <span class="bg-light">OR</span>
+          </p>
+          
+          <p>
+            <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-google"></i>   Login via Google</a>
+          </p>
+          
+          
+          <div class="form-group">
+            <button type="submit" value="Sign-Up" class="btn btn-primary btn-block"> Log in </button>
+            <!-- <input type="submit" value="submit" /> -->
+          </div> <!-- form-group// -->
+          <p class="text-center">Have an account? <a href="{% url 'account_login'  %}">login</a> </p>
+ 
+</form>
+</article>
+</div>
+<br>
+
+{% endblock %}
+
