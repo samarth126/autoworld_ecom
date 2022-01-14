@@ -31,5 +31,9 @@ urlpatterns = [
     path('brand/<slug:slug>/<str:pk>/', views.brand, name='brand'),
     path('model/<slug:slug>/<str:pk>/', views.model, name='model'),
     path('year/<slug:slug>/<str:pk>/', views.myear, name='myear'),
+
+    #Paytm
+    # path('/', views.a, name='a'),
+    path("handlerequest/", views.handlerequest, name="HandleRequest"),
     
 ]
