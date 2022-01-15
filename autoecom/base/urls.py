@@ -15,6 +15,9 @@ urlpatterns = [
     
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
+
+    path('update_checkout/',views.update_checkout, name="update_checkout"),
+
     path('update_item/', views.updateItem, name="update_item"),
 
     path('userdash/',views.user_dash, name="user_profile"),
@@ -28,5 +31,9 @@ urlpatterns = [
     path('brand/<slug:slug>/<str:pk>/', views.brand, name='brand'),
     path('model/<slug:slug>/<str:pk>/', views.model, name='model'),
     path('year/<slug:slug>/<str:pk>/', views.myear, name='myear'),
+
+    #Paytm
+    # path('/', views.a, name='a'),
+    path("handlerequest/", views.handlerequest, name="HandleRequest"),
     
 ]

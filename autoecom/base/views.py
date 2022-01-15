@@ -14,6 +14,17 @@ from .forms import RForm
 from django.contrib import messages
 from .filters import ProductFilter
 
+from django.views.decorators.csrf import csrf_exempt
+from paytmchecksum import PaytmChecksum 
+from Crypto.Cipher import AES
+
+# from django.shortcuts import get_object_or_404, render
+
+Paytm_id = 'rKiFJS58028658686652'
+Paytm_Key = 'EJpp@I3%eABmW8S%'
+
+
+
 # from django.shortcuts import get_object_or_404, render
 def nav(request,customer):
     order, created = Order.objects.get_or_create(Customer=customer, status=False)
@@ -72,14 +83,80 @@ def cart(request):
 
 def checkout(request):
      if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(Customer=customer, status=False)
+        customers = request.user.customer
+        order, created = Order.objects.get_or_create(Customer=customers, status=False)
         items = order.order_item_set.all()
      else:
         items =[]
         order ={'get_cart_total':0, 'get_cart_items':0}
-     context={'items':items, 'order':order}
+     context={'customers':customers, 'items':items, 'order':order}
      return render(request, 'checkout.html', context)
+
+
+
+
+def update_checkout(request):
+    if request.user.is_authenticated:
+        us = request.user
+        customers = request.user.customer
+        order = Order.objects.get(Customer=customers, status=False)
+        if request.method=="POST":
+            address=request.POST.get('address')
+            country=request.POST.get('country')
+            city=request.POST.get('city')
+            state=request.POST.get('state')
+            zipcode=request.POST.get('zipcode')
+
+            print(order.get_cart_total)
+            print(country)
+            en=shipping_address(Order=order,Customer=customers,country=country,city=city,state=state,zipcode=zipcode,address=address)
+            en.save()
+            anni=Order.objects.filter(Customer=customers).update(price=order.get_cart_total, status=True)
+            total_price=order.get_cart_total
+            order_id=order.id
+
+            # param_dict = {}
+            param_dict = {
+
+                'MID': Paytm_id,
+                'ORDER_ID': str(order_id),
+                'TXN_AMOUNT': str(total_price),
+                'CUST_ID': str(request.user.email),
+                'INDUSTRY_TYPE_ID': 'Retail',
+                'WEBSITE': 'WEBSTAGING',
+                'CHANNEL_ID': 'WEB',
+                'CALLBACK_URL':'http://127.0.0.1:8000/handlerequest/',
+
+            }
+            param_dict['CHECKSUMHASH'] = PaytmChecksum.generateSignature(param_dict, Paytm_Key) 
+         
+
+           
+            return render(request, 'PaytemRedirect.html', {'param_dict': param_dict})
+
+    context={}
+    return render(request, 'checkout.html', context)
+
+
+@csrf_exempt
+def handlerequest(request):
+    # paytm will send you post request here
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+
+    verify = PaytmChecksum.verifySignature(response_dict, Paytm_Key,checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print('order successful')
+        else:
+            print('order was not successful because' + response_dict['RESPMSG'])
+    return render(request, 'paymentstatus.html', {'response': response_dict})
+
+
 
 
 
