@@ -1,36 +1,83 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-<ul class="cards">
-<div class="row">
-    {% for i in loop %}
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row my-2">
     <div class="col-md-3">
-
-    <li>
-      <a href="" class="card">
-        <img src="{% static 'img/pro1.jpg' %}" class="card__image" alt="" />
-        <div class="card__overlay">
-          <div class="card__header">
-            <!-- <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                      -->
-            <!-- <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" /> -->
-            <div class="card__header-text">
-              <h3 class="card__title">BRAKE SYSTEM</h3>   
+      <div class="card text-center h-100">
+        <div class="card-block">
+          <h4 class="card-title">Truck</h4>
+          <h2><i class="fa fa-truck fa-3x"></i></h2>
+        </div>
+        <div class="row px-2 no-gutters">
+          <div class="col-6">
+            <h3 class="card card-block text-info border-top-0 border-left-0 border-bottom-0">100</h3>
+          </div>
+          <div class="col-6">
+            <h3 class="card card-block border-0">70%</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="col-md-3">
+          <div class="card text-center h-100">
+            <div class="card-block">
+              <h4 class="card-title">Bike/Scooter</h4>
+              <h2><i class="fa fa-motorcycle fa-3x"></i></h2>
+            </div>
+            <div class="row px-2 no-gutters">
+              <div class="col-6">
+                <h3 class="card card-block text-info border-top-0 border-left-0 border-bottom-0">100</h3>
+              </div>
+              <div class="col-6">
+                <h3 class="card card-block border-0">70%</h3>
+              </div>
             </div>
           </div>
-          <p class="card__description">...</p>
         </div>
-      </a>      
-    </li>
-
+    <div class="col-md-3">
+      <div class="card text-center h-100">
+        <div class="card-block">
+          <h4 class="card-title">Bus</h4>
+          <h2><i class="fa fa-bus fa-3x"></i></h2>
+        </div>
+        <div class="row px-2 no-gutters">
+          <div class="col-6">
+            <h3 class="card card-block text-info border-top-0 border-left-0 border-bottom-0">85</h3>
+          </div>
+          <div class="col-6">
+            <h3 class="card card-block border-0">50%</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center h-100 card-info">
+        <div class="card-block">
+          <h4 class="card-title">Car</h4>
+          <h2><i class="fa fa-car fa-3x"></i></h2>
+        </div>
+        <div class="row p-2 no-gutters rounded">
+          <div class="col-6 rounded">
+            <div class="card card-block text-info rounded-0 border-left-0 border-right-0 border-top-0 border-bottom-0">
+              <h3>75</h3>
+              <span class="small text-uppercase">items</span>
+            </div>
+          </div>
+          <div class="col-6 rounded">
+            <div class="card card-block text-info rounded-0 border-right-0 border-top-0 border-bottom-0">
+              <h3>30%</h3>
+              <span class="small text-uppercase">savings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
 </div>
-{% endfor %}
-</div>
-  </ul>
-
-  <style>
-    
-  </style>
-    
-
     {% endblock %}

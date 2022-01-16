@@ -11,7 +11,7 @@ body {
 
 .nav-side-menu {
   overflow: auto;
-  font-family: verdana;
+  font-family: Roboto;
   font-size: 12px;
   font-weight: 200;
   background-color: #2e353d;
@@ -54,7 +54,7 @@ body {
 }
 .nav-side-menu ul :not(collapsed) .arrow:before,
 .nav-side-menu li :not(collapsed) .arrow:before {
-  font-family: FontAwesome;
+  font-family: Roboto;
   content: "\f078";
   display: inline-block;
   padding-left: 10px;
@@ -89,7 +89,7 @@ body {
 }
 .nav-side-menu ul .sub-menu li:before,
 .nav-side-menu li .sub-menu li:before {
-  font-family: FontAwesome;
+  font-family: Roboto;
   content: "\f105";
   display: inline-block;
   padding-left: 10px;
@@ -193,9 +193,9 @@ body {
     border-radius: 6px 0 6px 6px;
 }
 
-a {
+/* a {
     color: #DA0037;
-}
+} */
 .prosize{
     height: 300px;
     width: 50px;
@@ -210,12 +210,12 @@ a:focus {
 }
 
 h1 {
-    font-family: "Gilroy",sans-serif!important;
+    font-family: "Roboto",sans-serif!important;
     font-weight: 700;
 }
 
 h2 {
-    font-family: 'Source Code Pro', monospace;
+    font-family: Roboto;
     font-weight: 700;
 }
 
@@ -241,7 +241,7 @@ h2 {
 .back-to-top {
     position: fixed;
     display: none;
-    background: #DA0037;
+    background: #2980B9;
     color: #ffffff;
     width: 40px;
     height: 40px;
@@ -277,7 +277,7 @@ h2 {
 .form-control:focus,
 .custom-select:focus {
     box-shadow: none;
-    border-color: #FF6F61;
+    border-color: #2980B9;
 }
 
 .custom-radio,
@@ -300,16 +300,16 @@ h2 {
 }
 
 .btn {
-    color: #EC255A;
-    background: #ffffff;
-    border: 1px solid #DA0037;
+    color: whitesmoke;
+    background: #2980B9;
+    border: 1px solid #2980B9;
 }
 
 .btn:hover,
 .btn:active,
 .btn:focus {
-    color: #ffffff;
-    background: #DA0037;
+    color: #2980B9;
+    background: whitesmoke;
     box-shadow: none;
 }
 
@@ -398,10 +398,10 @@ h2 {
 /********** Top Bar CSS ***********/
 /**********************************/
 .top-bar {
-    padding: 3px 0;
-    font-size: 14px;
+    padding: 2px 1px;
+    font-size: 13px;
     color: #F5F5F5;
-    background: #000000;
+    background: #0F2027;
 }
 
 .top-bar i {
@@ -452,18 +452,18 @@ h2 {
     margin-top: 0;
     border: 0;
     border-radius: 0;
-    background: #DA0037;
+    background: #2980B9;
 }
 
 .nav .dropdown-menu a.active {
     color: #353535;
-    background: #f8f9fa;
+    background: #2980B9;
 }
 
 @media (min-width: 768px) {
     .nav,
     .nav .navbar {
-        background: #DA0037 !important;
+        background: #2980B9 !important;
     }
     
     .nav .navbar-brand {
@@ -681,7 +681,7 @@ h2 {
     text-align: center;
     color: #ffffff;
     font-size: 22px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Roboto', monospace;
     font-weight: 700;
 }
 
@@ -1534,7 +1534,7 @@ h2 {
 }
 
 .sidebar-widget.category .navbar a:hover {
-    color: #FF6F61;
+    color: #2980B9;
 }
 
 .sidebar-widget.category .navbar i {
@@ -1578,7 +1578,7 @@ h2 {
 }
 
 .sidebar-widget.brands ul li a:hover {
-    color: #FF6F61;
+    color: #2980B9
 }
 
 .sidebar-widget.brands ul li a:hover::before {
@@ -1634,7 +1634,7 @@ h2 {
 
 .sidebar-widget.tag a:hover {
     color: #ffffff;
-    background: #FF6F61;
+    background: #2980B9;
     border-color: #FF6F61;
 }
 
@@ -2422,7 +2422,7 @@ h2 {
 .footer {
     position: relative;
     padding: 30px 0 0 0;
-    background: lightgray;
+    background: #EDEADE;
 }
 
 .footer .footer-widget {
@@ -2467,7 +2467,7 @@ h2 {
 }
 
 .footer .footer-widget ul li a:hover {
-    color: #FF6F61;
+    color: #2980B9;
 }
 
 .footer .footer-widget ul li a:hover::before {
@@ -2505,8 +2505,8 @@ h2 {
 }
 
 .footer .social a:hover {
-    color: #FF6F61;
-    border-color: #FF6F61;
+    color: #2980B9;
+    border-color: #2980B9;
 }
 
 .footer .payment {
@@ -2567,7 +2567,7 @@ h2 {
 .footer-bottom {
     position: relative;
     padding: 25px 0;
-    background: #000000;
+    background: #0F2027;
 }
 
 .footer-bottom .copyright {
@@ -2748,4 +2748,6 @@ h2 {
     -webkit-line-clamp: 3;
     overflow: hidden;
   }    
+/* test */
+
 
