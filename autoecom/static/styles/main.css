@@ -507,7 +507,7 @@ h2 {
 /**********************************/
 .bottom-bar {
     padding: 15px 0;
-    background: #04293A;
+    background-image: linear-gradient(to top ,#0F2027, #174869);
     margin-bottom: 1px;
 }
 
