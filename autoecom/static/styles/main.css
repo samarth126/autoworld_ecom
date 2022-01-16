@@ -463,7 +463,7 @@ h2 {
 @media (min-width: 768px) {
     .nav,
     .nav .navbar {
-        background: #DA0037 !important;
+        background: #1B559B !important;
     }
     
     .nav .navbar-brand {
@@ -507,7 +507,7 @@ h2 {
 /**********************************/
 .bottom-bar {
     padding: 15px 0;
-    background: #04293A;
+    background-image: linear-gradient(to left ,#1CB5E0, #000046);
     margin-bottom: 1px;
 }
 

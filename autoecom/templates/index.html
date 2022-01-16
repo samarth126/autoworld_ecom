@@ -97,28 +97,32 @@
                
     <div class="product">
       <div class="section-header">
-          <h1>Search by Categories</h1>
+          <h1>Search by Brands</h1>
       </div>
 
     <div class="row">
 
-      
+  <style>
+      .sil{
+        height: 80px;
+        color:black;
+      }
+      .sil:hover{
+        color:#5e8adb;
+      }
+  </style>    
 
         {% for cateorie in cateories %}
        
-        <div class="col-md-3">
+        <div class="col-md-2">
           <a href="{% url 'category' slug=cateorie.slug %}">
-          <div class="shadow-lg p-3 mb-3 bg-white rounded ">
-            <div class="d-flex justify-content-center cards ">
-           <img src="{{cateorie.image.url}}" width="100px" height="80px">
-
-            <br>
+          <div class="shadow-lg p-3 mb-3 bg-white rounded sil">
+            <div class="text-center ">
+            
          
              {{cateorie.name}}
              </div>
              
-
-            <!-- <br> {{cateorie.name}} -->
           </div>
         </a>
         </div>
