@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 import json
+from django.core.mail import send_mail
 from django.db.models import *
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
@@ -64,7 +65,9 @@ def home(request):
 
 def cart(request):
     if request.user.is_authenticated:
+        us=request.user
         customer = request.user.customer
+        print(us.email)
         cartItems= nav(HttpRequest, customer)
         order, created = Order.objects.get_or_create(Customer=customer, status=False)
         items = order.order_item_set.all()
@@ -112,6 +115,11 @@ def update_checkout(request):
             en=shipping_address(Order=order,Customer=customers,country=country,city=city,state=state,zipcode=zipcode,address=address)
             en.save()
             anni=Order.objects.filter(Customer=customers).update(price=order.get_cart_total, status=True)
+            ob=us
+            res=sendemail(request, ob)
+            print(ob)
+            # ress=sendemail(request, anni.status)
+            
             total_price=order.get_cart_total
             order_id=order.id
 
@@ -137,9 +145,35 @@ def update_checkout(request):
     context={}
     return render(request, 'checkout.html', context)
 
+def sendemail(request, us):
+    usrr=us
+    
+    send_mail(
+        
+                
+                'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
+                'dear thank you', #message
+                'priyanshuparashar223@gmail.com', #from email
+                [usrr.email], #To email
+                fail_silently=False
+                
+            )
+    
+    
+    
+
 
 @csrf_exempt
 def handlerequest(request):
+  
+        
+        
+       
+        
+    
+    # customers = request.user.customer
+    # order = Order.objects.get(Customer=customers, status=False)
+    
     # paytm will send you post request here
     form = request.POST
     response_dict = {}
@@ -151,16 +185,22 @@ def handlerequest(request):
     verify = PaytmChecksum.verifySignature(response_dict, Paytm_Key,checksum)
     if verify:
         if response_dict['RESPCODE'] == '01':
+            
+            
+            return HttpResponse('thanks for your mail')
             print('order successful')
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
+            # order_status=False
+            # respons=sendemail(request, order_status)
     return render(request, 'paymentstatus.html', {'response': response_dict})
 
 
 
 
 
-
+    
+ 
 
 
 def updateItem(request):
