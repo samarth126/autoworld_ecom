@@ -9,7 +9,7 @@
 <body>
     <h1>Redirecting to merchant page........</h1>
     <h1>Please do not refresh the page........</h1>
-    <form method="post" action="https://securegw-stage.paytm.in/theia/processTransaction" name="paytm">
+    <form method="post" action="https://securegw-stage.paytm.in/theia/api/v1/processTransaction?mid={{param_dict.MID}}&orderId={{param_dict.ORDER_ID}}" name="paytm">
         <!-- {{param_dict.ORDER_ID}}
         {{param_dict.MID}} -->
         {% for key, value in param_dict.items %}
