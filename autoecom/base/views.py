@@ -187,7 +187,7 @@ def handlerequest(request):
         if response_dict['RESPCODE'] == '01':
             
             
-            return HttpResponse('thanks for your mail')
+            
             print('order successful')
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
