@@ -324,7 +324,7 @@ h2 {
     z-index: 1;
     opacity: 0;
     transition: .5s;
-    background: rgba(255, 111, 97, .7);
+    background: #3a7bd5;
     border-radius: 4px;
 }
 
@@ -350,14 +350,14 @@ h2 {
 .normal-slider .slick-prev:focus,
 .normal-slider .slick-next:hover,
 .normal-slider .slick-next:focus {
-    background: rgba(0, 0, 0, .7);
+    background: rgb(134, 131, 131);
 }
 
 .normal-slider .slick-prev:hover::before,
 .normal-slider .slick-prev:focus::before,
 .normal-slider .slick-next:hover::before,
 .normal-slider .slick-next:focus::before {
-    color: #FF6F61;
+    color: #3a7bd5;
 }
 
 .normal-slider .slick-prev::before,
@@ -529,7 +529,7 @@ h2 {
     height: 40px;
     padding: 0 15px;
     color: #666666;
-    border: 1px solid #FF6F61;
+    border: 1px solid #3a7bd5;
     border-radius: 4px;
 }
 
@@ -542,13 +542,13 @@ h2 {
     padding: 0 15px;
     border: none;
     background: none;
-    color: #FF6F61;
+    color: #3a7bd5;
     border-radius: 0 2px 2px 0;
 }
 
 .bottom-bar .search button:hover {
-    background: #FF6F61;
-    color: #ffffff;
+    background: #3a7bd5;
+    color: white;
 }
 
 .bottom-bar .user {
@@ -563,12 +563,12 @@ h2 {
 
 .bottom-bar .user .cart i,
 .bottom-bar .user .wishlist i {
-    color: #000000;
+    color: white;
 }
 
 .bottom-bar .user .cart span,
 .bottom-bar .user .wishlist span {
-    color: #000000;
+    color: white;
     font-size: 20px;
 }
 
@@ -576,7 +576,7 @@ h2 {
 .bottom-bar .user .wishlist:hover i,
 .bottom-bar .user .cart:hover span,
 .bottom-bar .user .wishlist:hover span {
-    color: #ffffff;
+    color: #3a7bd5;
 }
 
 @media (min-width: 768px) {
@@ -1146,7 +1146,7 @@ h2 {
 }
 
 .product-view .product-search input:focus {
-    border-color: #FF6F61;
+    border-color: #3a7bd5;
 }
 
 .product-view .product-search button {
@@ -1168,7 +1168,7 @@ h2 {
 }
 
 .product-view .product-search button:hover {
-    background: #FF6F61;
+    background: #3a7bd5;
     color: #ffffff;
 }
 
@@ -1263,11 +1263,11 @@ h2 {
 
 .product-detail .product-slider-single-nav {
     margin: 15px 30px 30px 30px;
-    border: 3px double #FF6F61;
+    border: 3px double #3a7bd5;
 }
 
 .product-detail .product-slider-single-nav .slider-nav-img {
-    border-right: 1px solid #FF6F61;
+    border-right: 1px solid #3a7bd5;
     overflow: hidden;
 }
 
@@ -1311,7 +1311,7 @@ h2 {
 }
 
 .product-detail .product-content .ratting i {
-    color: #FF6F61;
+    color: #3a7bd5;
     font-size: 16px;
 }
 
@@ -1335,7 +1335,7 @@ h2 {
 
 .product-detail .product-content .price p {
     display: inline-block;
-    color: #FF6F61;
+    color: #3a7bd5;
     font-size: 30px;
     font-weight: 700;
     margin: 0;
@@ -1390,7 +1390,7 @@ h2 {
 }
 
 .product-detail .nav.nav-pills .nav-link {
-    color: #FF6F61;
+    color: white;
     background: #000000;
     border-radius: 0;
     transition: all .3s;
@@ -1399,7 +1399,7 @@ h2 {
 .product-detail .nav.nav-pills .nav-link:hover,
 .product-detail .nav.nav-pills .nav-link.active {
     color: #000000;
-    background: #FF6F61;
+    background: #3a7bd5;
 }
 
 .product-detail .tab-content {
@@ -1538,7 +1538,7 @@ h2 {
 }
 
 .sidebar-widget.category .navbar i {
-    color: #FF6F61;
+    color: #3a7bd5;
     width: 20px;
     text-align: center;
     margin-right: 8px;
