@@ -89,6 +89,7 @@ def checkout(request):
         customers = request.user.customer
         order, created = Order.objects.get_or_create(Customer=customers, status=False)
         items = order.order_item_set.all()
+        print(order.id)
      else:
         items =[]
         order ={'get_cart_total':0, 'get_cart_items':0}
@@ -166,10 +167,6 @@ def sendemail(request, us):
 @csrf_exempt
 def handlerequest(request):
   
-        
-        
-       
-        
     
     # customers = request.user.customer
     # order = Order.objects.get(Customer=customers, status=False)
@@ -185,9 +182,8 @@ def handlerequest(request):
     verify = PaytmChecksum.verifySignature(response_dict, Paytm_Key,checksum)
     if verify:
         if response_dict['RESPCODE'] == '01':
-            
-            
-            return HttpResponse('thanks for your mail')
+   
+            # return HttpResponse('thanks for your mail')
             print('order successful')
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
