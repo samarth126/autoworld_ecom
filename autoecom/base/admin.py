@@ -10,6 +10,7 @@ admin.site.register(Category, MPTTModelAdmin)
 
 admin.site.register(User)
 admin.site.register(Customer)
+admin.site.register(Message)
 admin.site.register(shipping_address)
 # admin.site.register(Order_status)
 admin.site.register(Order)
