@@ -74,7 +74,7 @@
           <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i
               class="fa fa-shopping-bag"></i>Orders</a>
           <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i
-              class="fa fa-credit-card"></i>Payment Method</a>
+              class="fa fa-credit-card"></i>Message from admin</a>
           <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i
               class="fa fa-map-marker-alt"></i>address</a>
           <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i
@@ -152,13 +152,16 @@
             </div>
           </div>
           <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
-            <h4>Payment Method</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In
-              efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique
-              viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus
-              eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque.
-            </p>
+            <h4>Message From the seller for u</h4>
+            <br>
+            {% for message in messages %}
+            <p>-> {{message.real_message}}  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b><i>sent at-</i></b> &nbsp;  <i class="cil">{{message.created_at}}</i> </p>
+            {% endfor %}
+       <style>
+         .cil{
+           color:#3a7bd5;
+         }
+       </style>    
           </div>
           <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
             <h4>Address</h4>

@@ -240,11 +240,12 @@ def user_dash(request):
         cartItems= nav(HttpRequest, cust)
         # cust = request.user.customer
         # f = shipping_address.objects.get(Customer=cust.id)
+        messages = Message.objects.filter(Customer=cust)
         orders = Order.objects.filter(Customer=cust, status=True)
         itemes = Order_item.objects.all()
     else:
             return redirect('loginr')
-    context =  {'customers':cust, ' orders': orders, 'itemes':itemes,'us':us,'cartItems':cartItems  }
+    context =  {'customers':cust, ' orders': orders, 'itemes':itemes,'us':us,'cartItems':cartItems,'messages':messages }
     return render (request, 'user_profile/dashboard.html',context)
 
 
