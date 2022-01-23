@@ -524,9 +524,53 @@ def logoutUser(request):
 
 
 def a(request):
-    loop=range(1,8)
+    if request.user.is_authenticated:
+        us=request.user
+        cus=Customer.objects.get(user=us)
+        oor=Order.objects.filter(Customer=cus)
+        
+        
+        
+        
+        
+        dic={}
+        
+        for k in oor:
+            ok=Order_item.objects.filter(Order=k)
+            
+            for o in ok:
+                dic[o]=o.Product
+               
+            
+            
+        
+        
+            
+            # dic[k]=(Order_item.objects.filter(Order=k))
+        print(ok)           
+        
+            
+                        
+            
+        
+              
+          
+            
+                
+                
+            
+         
+        
+        
+        
+        
+            
+        
+        
+        
+  
 
     
-    return render(request, 'a.html', {'loop':loop})
+    return render(request, 'a.html', {'dic':dic})
 
 
