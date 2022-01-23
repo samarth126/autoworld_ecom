@@ -41,47 +41,27 @@
       </div>
       
       <div class="col-md-4">
-    
+        <form method="get" action="products">
       <div class="form-group">
         <br>
+      
         <label for="exampleFormControlSelect1">Select Manufacturer</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <div class="form-control">{{ myFilter.form.manufacturer }}</div>
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Select Model</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <div class="form-control">{{ myFilter.form.vehicaltype }}
+
+        </div>
+       
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Select Variant-year</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <div class="form-control">{{ myFilter.form.vmodel }}</div>
       </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Select Fuel-Engine</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <div class="form-control">{{ myFilter.form.myear }}</div>
         </div>
       <button type="submit" class="btn btn-primary btn-lg btn-block"> search</button>
       </form>
@@ -97,7 +77,7 @@
     
     <form method="get" action="products">
       <div class="form-group ">
-        {{ myFilter.form }}
+        {{ myFilter.form.vehicaltype }}
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     

@@ -92,14 +92,19 @@
               orderno.
 
               {% for order in orders %}
-              {% for iteme in itemes %}
-              {% if iteme.Order == order.id %}
+            <ul>
+              <li>{{ order }}
+                   {% for iteme in itemes%}
 
-              {{iteme}}
+                               {% if iteme.Order == order %}
 
-              {% endif %}
+                        <b><i> this is product- </i></b>{{iteme.Product.title}} <b><i>  quantity of product-</i></b> {{iteme.quantity}} <b><i> PRICE OF ORDER </i></b>= Rs.{{ order.price }}<br>
 
-              {% endfor %}
+                                 {% endif %}
+                   {% endfor %}
+                   
+                  </li>
+            </ul> 
               {% endfor %}
               <!--            
               {{item.Product.name}}<br>
@@ -110,46 +115,9 @@
             </p>
           </div>
           <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead class="thead-dark">
-                  <tr>
-                    <th>No</th>
-                    <th>Product</th>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Product Name</td>
-                    <td>01 Jan 2020</td>
-                    <td>$99</td>
-                    <td>Approved</td>
-                    <td><button class="btn">View</button></td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Product Name</td>
-                    <td>01 Jan 2020</td>
-                    <td>$99</td>
-                    <td>Approved</td>
-                    <td><button class="btn">View</button></td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Product Name</td>
-                    <td>01 Jan 2020</td>
-                    <td>$99</td>
-                    <td>Approved</td>
-                    <td><button class="btn">View</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+           {% for order in orders %}
+           {{order}}
+           {% endfor %}
           </div>
           <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
             <h4>Message From the seller for u</h4>

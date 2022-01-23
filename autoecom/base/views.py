@@ -248,7 +248,7 @@ def user_dash(request):
         itemes = Order_item.objects.all()
     else:
             return redirect('loginr')
-    context =  {'customers':cust, ' orders': orders, 'itemes':itemes,'us':us,'cartItems':cartItems,'messages':messages }
+    context =  {'customers':cust, 'orders': orders, 'itemes':itemes,'us':us,'cartItems':cartItems,'messages':messages }
     return render (request, 'user_profile/dashboard.html',context)
 
 
