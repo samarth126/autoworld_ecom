@@ -118,14 +118,16 @@ class Product(models.Model):
     manufacturer=models.ForeignKey(Manufacturer, blank=False, on_delete=models.RESTRICT)
     vmodel=models.ForeignKey(CarModel, blank=False, on_delete=models.RESTRICT)
     myear=models.ForeignKey(Year, on_delete=models.RESTRICT)
+    brand=models.CharField(max_length=200, blank=True, null=True )
     
     category=models.ForeignKey(Category, on_delete=models.RESTRICT)
     title=models.CharField(max_length=255, help_text=('required'))
     desc=models.TextField(blank=True, null=True, verbose_name=('desciptions'))
     
-    regular_price=models.DecimalField(max_digits=5, decimal_places=2)
-    descount_price=models.DecimalField(max_digits=5, decimal_places=2, blank=True )
+    regular_price=models.DecimalField(max_digits=6, decimal_places=1)
+    descount_price=models.DecimalField(max_digits=6, decimal_places=1, blank=True )
     is_active=models.BooleanField(default=True)
+    
     slug=models.SlugField(blank=True, null=True)
     
     

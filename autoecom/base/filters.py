@@ -5,4 +5,4 @@ from .models import *
 class ProductFilter(django_filters.FilterSet):
     class Meta:
         model = Product
-        fields =['vehicaltype', 'manufacturer', 'vmodel']
+        fields =['vehicaltype', 'manufacturer', 'vmodel', 'myear','category']

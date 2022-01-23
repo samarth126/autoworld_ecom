@@ -57,11 +57,14 @@ def home(request):
     
     products = Product.objects.all()
     cateories = Category.objects.all()
+    pro=Product.objects.prefetch_related("product_image").all()
+    myFilter=ProductFilter(request.GET, queryset=pro)
+    pro=myFilter.qs
    
     loop=range(1,8)
     # message = Message.objects.all()
     
-    return render(request, 'index.html', {'loop':loop,'products':products,'cartItems':cartItems, 'cateories':cateories })
+    return render(request, 'index.html', {'loop':loop,'products':products,'cartItems':cartItems, 'cateories':cateories, 'myFilter':myFilter })
 
 def cart(request):
     if request.user.is_authenticated:
@@ -307,7 +310,7 @@ def product(request, pk=None):
     
     
     
-def products(request ):
+def products(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         cartItems= nav(HttpRequest, customer)

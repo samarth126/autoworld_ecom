@@ -92,6 +92,21 @@
   <br>
   <br>
   <br>
+  <div class="container">
+    <div class="col-md-4">
+    
+    <form method="get" action="products">
+      <div class="form-group ">
+        {{ myFilter.form }}
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
+      </div>
+    </form>
+    </div>
+    </div>
+    <br>
+    <br>
 
 
   <div class="container">
@@ -189,7 +204,19 @@
       <div class="card text-center h-100">
         <div class="card-block">
           <h4 class="card-title">Truck</h4>
-          <h2><i class="fa fa-truck fa-3x"></i></h2>
+          <form method="GET" action="{% url 'products' %}"id="form-id">
+            
+              
+              <input type="hidden" name="q" value="truck" >
+           
+          
+          
+            <a href="#" onclick="document.getElementById('form-id').submit();"><h2><i class="fa fa-truck fa-3x"></i></h2>  </a>
+          
+          
+          
+         
+         </form>
         </div>
         <div class="row px-2 no-gutters">
           <div class="col-6">
@@ -204,8 +231,19 @@
     <div class="col-md-3">
       <div class="card text-center h-100">
         <div class="card-block">
+          <form method="GET" action="{% url 'products' %}" id="form-id1">
+          
+          
+            <input type="hidden" name="q" value="bike/scooter">
           <h4 class="card-title">Bike/Scooter</h4>
-          <h2><i class="fa fa-motorcycle fa-3x"></i></h2>
+
+          
+            <a href="#" onclick="document.getElementById('form-id1').submit();"><h2><i class="fa fa-motorcycle fa-3x"></i></h2> </a>
+            
+            
+            
+            
+            </form>
         </div>
         <div class="row px-2 no-gutters">
           <div class="col-6">
@@ -221,7 +259,20 @@
       <div class="card text-center h-100">
         <div class="card-block">
           <h4 class="card-title">Bus</h4>
-          <h2><i class="fa fa-bus fa-3x"></i></h2>
+          <form method="GET" action="{% url 'products' %}" id="form-id2">
+          
+          
+            <input type="hidden" name="q" value="bus">
+          
+          
+                    <a href="#" onclick="document.getElementById('form-id2').submit();">
+                  <h2><i class="fa fa-bus fa-3x"></i></h2>
+                    </a>
+                    
+                    
+                    
+                    
+                    </form>
         </div>
         <div class="row px-2 no-gutters">
           <div class="col-6">
@@ -237,7 +288,20 @@
       <div class="card text-center h-100 card-info">
         <div class="card-block">
           <h4 class="card-title">Car</h4>
-          <h2><i class="fa fa-car fa-3x"></i></h2>
+          <form method="GET" action="{% url 'products' %}" id="form-id3">
+          
+          
+            <input type="hidden" name="q" value="car">
+
+          
+          <a href="#" onclick="document.getElementById('form-id3').submit();">
+            <h2><i class="fa fa-car fa-3x"></i></h2>
+          </a>
+          
+          
+          
+          
+          </form>
         </div>
         <div class="row p-2 no-gutters rounded">
           <div class="col-6 rounded">
