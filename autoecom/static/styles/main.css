@@ -8,7 +8,9 @@ body {
     background: #ffffff;
 }
 
-
+.table-bordered td, .table-bordered th{
+    border: none;
+}
 .nav-side-menu {
   overflow: auto;
   font-family: Roboto;
@@ -1702,10 +1704,10 @@ h2 {
 .cart-page .table button {
     width: 30px;
     height: 30px;
-    font-size: 14px;
+    font-size: 15px;
     text-align: center;
     color: #ffffff;
-    background: #FF6F61;
+    background: #153f5b;
     border: none;
     border-radius: 4px;
 }
@@ -2032,6 +2034,7 @@ h2 {
     border-radius: 0;
     border-bottom: 1px solid #dddddd;
     transition: all .3s;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .my-account .nav.nav-pills .nav-link:last-child {
@@ -2041,7 +2044,7 @@ h2 {
 .my-account .nav.nav-pills .nav-link:hover,
 .my-account .nav.nav-pills .nav-link.active {
     color: #ffffff;
-    background: #FF6F61;
+    background: #153f5b;
 }
 
 .my-account .nav.nav-pills .nav-link i {

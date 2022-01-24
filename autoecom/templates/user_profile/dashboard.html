@@ -3,67 +3,7 @@
 
 {% block content %}
 <br>
-<section>
-  <div class="container">
 
-
-
-    <div class="row">
-
-      <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Full name</p>
-
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"> {{customers.first_name}} {{customers.last_name}}</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user}}</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.phone_no}}</p>
-              </div>
-            </div>
-            <hr>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">
-
-                  {{ff.state}}
-                  {{ff.city}}
-                  {{ff}}
-                  {{ff.zipcode}}
-
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
 <div class="my-account">
   <div class="container">
     <div class="row">
@@ -79,60 +19,149 @@
               class="fa fa-map-marker-alt"></i>address</a>
           <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i
               class="fa fa-user"></i>Account Details</a>
-          <a class="nav-link" href="index.html"><i class="fa fa-sign-out-alt"></i>Logout</a>
+          <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out-alt"></i>Logout</a>
         </div>
       </div>
+
       <div class="col-md-9">
         <div class="tab-content">
-          <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
-            <h4>Dashboard</h4>
-            <p>
 
-              old order history<br>
-              orderno.
+          <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
+            <section>
+              <div class="container">
+            
+            
+            
+                <div class="row">
+            
+                  <div class="col-lg-8">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <p class="mb-0">Full name</p>
+            
+                          </div>
+                          <div class="col-sm-9">
+                            <p class="text-muted mb-0"><span style="color:#2980b9;">{{customers.first_name}} {{customers.last_name}}</span></p>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <p class="mb-0">Email</p>
+                          </div>
+                          <div class="col-sm-9">
+                            <p class="text-muted mb-0"><span style="color:#2980b9;">{{user}}</span></p>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <p class="mb-0">Phone</p>
+                          </div>
+                          <div class="col-sm-9">
+                            <p class="text-muted mb-0"><span style="color:#2980b9;">{{user.phone_no}}</span></p>
+                          </div>
+                        </div>
+                        <hr>
+            
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <p class="mb-0">Address</p>
+                          </div>
+                          <div class="col-sm-9">
+                            <p class="text-muted mb-0">
+            
+                              {{ff.state}}
+                              {{ff.city}}
+                              {{ff}}
+                              {{ff.zipcode}}
+            
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+
+          <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
+
+            <div class="text-center">
+              <h2>YOUR ORDERS</h2>
+            </div>
+
+            <div class="row">
 
               {% for order in orders %}
-            <ul>
-              <li>{{ order }}
-                   {% for iteme in itemes%}
+              <div class="col-md-6">
 
-                               {% if iteme.Order == order %}
+                <div class="card">
 
-                        <b><i> this is product- </i></b>{{iteme.Product.title}} <b><i>  quantity of product-</i></b> {{iteme.quantity}} <b><i> PRICE OF ORDER </i></b>= Rs.{{ order.price }}<br>
+                  <div class="card-header text-white" style="background-color: #153f5b;">
+                    ORDER NO. {{ order }}
+                  </div>
+                  {% for iteme in itemes%}
 
-                                 {% endif %}
-                   {% endfor %}
-                   
-                  </li>
-            </ul> 
+                  {% if iteme.Order == order %}
+                  <div class="card-body">
+
+                    <p class="card-text">
+                      PRODUCT:<span style="color:#2980b9;">{{iteme.Product.title}} </span><br>
+                      QUANTITY:<span style="color:#2980b9;">{{iteme.quantity}} </span><br>
+                      PRICE:<span style="color:#2980b9;">{{ order.price }} </span>
+                    </p>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+
+
+                </div>
+              </div>
+
               {% endfor %}
-              <!--            
-              {{item.Product.name}}<br>
-              {{item.Product.price|floatformat:2}}<br>
-              {{item.get_total|floatformat:2}}<br> -->
-              </tr>
 
-            </p>
+            </div>
           </div>
-          <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
-           {% for order in orders %}
-           {{order}}
-           {% endfor %}
-          </div>
+
+
+
+
+
           <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
-            <h4>Message From the seller for u</h4>
-            <br>
-            {% for message in messages %}
-            <p>-> {{message.real_message}}  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b><i>sent at-</i></b> &nbsp;  <i class="cil">{{message.created_at}}</i> </p>
-            {% endfor %}
-       <style>
-         .cil{
-           color:#3a7bd5;
-         }
-       </style>    
+            <div class="col-sm-7 col-md-7">
+              <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                  ×</button>
+                <span class="glyphicon glyphicon-info-sign"></span> <strong>Message From Seller</strong>
+
+                <hr class="message-inner-separator">
+                <p>
+                  {% for message in messages %}
+                  <p class="text-left">{{message.real_message}} 
+                   
+                  </p>
+                  <p class="font-italic text-sm-right">--{{message.created_at}}</p>
+                  {% endfor %}</p>
+              </div>
+            </div>
+           
+            
+          
           </div>
+
+
           <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
+
             <h4>Address</h4>
+
             <div class="row">
               <div class="col-md-6">
                 <h5>Payment Address</h5>
@@ -148,6 +177,8 @@
               </div>
             </div>
           </div>
+
+
           <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
             <h4>Account Details</h4>
             <form method="post" action="{% url 'update_acc'%}">

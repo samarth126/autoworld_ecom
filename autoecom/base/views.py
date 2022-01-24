@@ -385,12 +385,14 @@ def products(request):
             
             Q(title__icontains=q) |
             Q(desc__icontains=q)  |
-            Q(vmodel__model_name__icontains=q)
+            Q(vmodel__model_name__icontains=q) |
+            Q(vehicaltype__type_of__icontains=q)
             
             
         )
-        print(products)
-        return render(request, 'products.html', {'product':products, 'myFilter':myFilter})
+        
+        cateories = Category.objects.all()
+        return render(request, 'products.html', {'product':products, 'myFilter':myFilter,'cateories':cateories})
     return render(request, 'products.html', context)   
   
         
