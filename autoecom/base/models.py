@@ -176,6 +176,8 @@ class Customer(models.Model):
 class Order(models.Model):
     Customer=models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
     status=models.BooleanField(default=False, null=True , blank=False)
+    payment_status=models.BooleanField(default=False, null=True , blank=False)
+    cod=models.BooleanField(default=False, null=True , blank=False)
     price=models.FloatField(null=True)
 
     def __str__(self):

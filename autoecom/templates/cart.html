@@ -82,9 +82,26 @@
                                     <p>Shipping Cost<span>&#8377;1</span></p>
                                     <h2>Grand Total<span>&#8377;{{order.get_cart_total|floatformat:2}}</span></h2>
                                 </div>
-                                <div class="cart-btn">
-                                    <button>Update Cart</button>
-                                    <button>Checkout</button>
+
+
+                                <style>
+                                    .dd{
+                                        background-color: #2980B9;
+                                        color:#ffffff;
+                                        border: black;
+                                    }
+                                    .d{
+                                        color:white;
+                                    }
+                                  
+                                </style>     
+
+                          
+                                    <!-- <button class="ss">Place Order</button> -->
+                         
+                                <div class="btn-lg dd">
+                                  <a class="d"href="{% url 'choosepayment' %}" >CHOOSE A PAYMENT METHOD</a>
+                                  
                                 </div>
                             </div>
                         </div>

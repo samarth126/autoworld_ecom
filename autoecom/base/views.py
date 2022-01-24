@@ -83,6 +83,17 @@ def cart(request):
 
 
 
+def cod(request):
+    if request.user.is_authenticated:
+        customers = request.user.customer
+        order, created = Order.objects.get_or_create(Customer=customers, status=False)
+        items = order.order_item_set.all()
+        print(order.id)
+    else:
+        items =[]
+        order ={'get_cart_total':0, 'get_cart_items':0}
+    context={'customers':customers, 'items':items, 'order':order}
+    return render(request, 'cod.html', context)
 
 
 
@@ -98,6 +109,30 @@ def checkout(request):
         order ={'get_cart_total':0, 'get_cart_items':0}
      context={'customers':customers, 'items':items, 'order':order}
      return render(request, 'checkout.html', context)
+
+
+def choosepayment(request):
+    return render(request, 'choosepayment.html')
+
+
+
+def update_cod(request):
+    if request.user.is_authenticated:
+        us = request.user
+        customers = request.user.customer
+        order = Order.objects.get(Customer=customers, status=False)
+        if request.method=="POST":
+            address=request.POST.get('address')
+            country=request.POST.get('country')
+            city=request.POST.get('city')
+            state=request.POST.get('state')
+            zipcode=request.POST.get('zipcode')
+
+            en=shipping_address(Order=order,Customer=customers,country=country,city=city,state=state,zipcode=zipcode,address=address)
+            en.save()
+            anni=Order.objects.filter(Customer=customers, status=False).update(price=order.get_cart_total, status=True, cod=True)
+    return render(request, 'cod.html')
+
 
 
 
@@ -118,9 +153,9 @@ def update_checkout(request):
             print(country)
             en=shipping_address(Order=order,Customer=customers,country=country,city=city,state=state,zipcode=zipcode,address=address)
             en.save()
-            anni=Order.objects.filter(Customer=customers).update(price=order.get_cart_total, status=True)
+            anni=Order.objects.filter(Customer=customers,status=False).update(price=order.get_cart_total, status=True)
             ob=us
-            res=sendemail(request, ob)
+            # res=sendemail(request, ob)
             print(ob)
             # ress=sendemail(request, anni.status)
             
@@ -149,31 +184,26 @@ def update_checkout(request):
     context={}
     return render(request, 'checkout.html', context)
 
-def sendemail(request, us):
-    usrr=us
+# def sendemail(request, us):
+#     usrr=us
     
-    send_mail(
+#     send_mail(
         
                 
-                'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
-                'dear thank you', #message
-                'priyanshuparashar223@gmail.com', #from email
-                [usrr.email], #To email
-                fail_silently=False
+#                 'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
+#                 'dear thank you', #message
+#                 'priyanshuparashar223@gmail.com', #from email
+#                 [usrr.email], #To email
+#                 fail_silently=False
                 
-            )
+#             )
     
-    
-    
+
+
 
 
 @csrf_exempt
 def handlerequest(request):
-  
-    
-    # customers = request.user.customer
-    # order = Order.objects.get(Customer=customers, status=False)
-    
     # paytm will send you post request here
     form = request.POST
     response_dict = {}
@@ -181,17 +211,30 @@ def handlerequest(request):
         response_dict[i] = form[i]
         if i == 'CHECKSUMHASH':
             checksum = form[i]
-
+    x=request.POST.get('ORDERID')
+    y=request.POST.get('CUSTID')
+    print(y)
     verify = PaytmChecksum.verifySignature(response_dict, Paytm_Key,checksum)
     if verify:
         if response_dict['RESPCODE'] == '01':
-   
-            # return HttpResponse('thanks for your mail')
+            ann=Order.objects.filter(id=x)
+            ann.update(payment_status=True)
+            # send_mail(
+        
+                
+            #     'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
+            #     'hello thank you for purchasing order id is x', #message
+            #     'priyanshuparashar223@gmail.com', #from email
+            #     [y], #To email
+            #     fail_silently=False
+                
+            # )
             print('order successful')
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
             # order_status=False
             # respons=sendemail(request, order_status)
+    
     return render(request, 'paymentstatus.html', {'response': response_dict})
 
 
