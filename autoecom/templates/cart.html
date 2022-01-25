@@ -2,6 +2,46 @@
 
 
 {% block content %}
+{% if not request.user.is_authenticated %}
+<script>
+window.onload = function () {
+    document.getElementById("myb").click();
+//dom not only ready, but everything is loaded
+}
+</script>
+<!-- Button trigger modal -->
+<button  id="myb" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="display: none;">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Please Login to add items in your Cart</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                <i class="fa fa-cart-plus fa-5x"></i> 
+                
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <a href="{% url 'account_login' %}"> <button type="button" class="btn btn-primary">Login</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% if request.user.is_authenticated %}
+
 <div class="container">
     <h2>Shopping Cart</h2>
 </div>
@@ -99,10 +139,9 @@
                           
                                     <!-- <button class="ss">Place Order</button> -->
                          
-                                <div class="btn-lg dd">
-                                  <a class="d"href="{% url 'choosepayment' %}" >CHOOSE A PAYMENT METHOD</a>
-                                  
-                                </div>
+                                <button type="button" class="btn-lg dd" data-toggle="modal" data-target="#exampleModalCenter">
+                                    CHOOSE PAYMENT MODE
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -111,10 +150,37 @@
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn-lg dd" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h5 class="modal-title " id="exampleModalLongTitle">CHOOSE PAYMENT MODE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" >
+               <div class="text-center">
+               
+               <a href="{% url 'cod' %}"><button  class="btn btn-info btn-lg float-left">Cash on delivery</button></a>
+               <a href="{% url 'checkout' %}"><button class="btn btn-info btn-lg float-right">Pay Online</button></a>
+               </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
 
 
 
-
+{% endif %}
 
 {% endblock %}
 
