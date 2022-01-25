@@ -12,6 +12,7 @@
     <form method="post" action="https://securegw-stage.paytm.in/theia/processTransaction" name="paytm">
         <!-- {{param_dict.ORDER_ID}}
         {{param_dict.MID}} -->
+        <!-- {{ param_dict.CUST_ID }} -->
         {% for key, value in param_dict.items %}
         <input type="hidden" name="{{key}}" value="{{value}}">
         {% endfor %}

@@ -161,16 +161,18 @@ def update_checkout(request):
             
             total_price=order.get_cart_total
             order_id=order.id
+            emm=request.user.email
+            print(emm)
 
             # param_dict = {}
             param_dict = {
 
                 'MID': Paytm_id,
-                'ORDER_ID': str(order_id),
-                'TXN_AMOUNT': str(total_price),
-                'CUST_ID': str(request.user.email),
-                'INDUSTRY_TYPE_ID': 'Retail',
                 'WEBSITE': 'WEBSTAGING',
+                'ORDER_ID': str(order_id),
+                'CUST_ID':str(emm),
+                'TXN_AMOUNT': str(total_price),
+                'INDUSTRY_TYPE_ID': 'Retail',
                 'CHANNEL_ID': 'WEB',
                 'CALLBACK_URL':'http://127.0.0.1:8000/handlerequest/',
 
@@ -211,21 +213,24 @@ def handlerequest(request):
         response_dict[i] = form[i]
         if i == 'CHECKSUMHASH':
             checksum = form[i]
+    
     x=request.POST.get('ORDERID')
-    y=request.POST.get('CUSTID')
-    print(y)
+    
     verify = PaytmChecksum.verifySignature(response_dict, Paytm_Key,checksum)
     if verify:
         if response_dict['RESPCODE'] == '01':
             ann=Order.objects.filter(id=x)
+            anni=Order.objects.get(id=x)
+            ss=anni.Customer.user
             ann.update(payment_status=True)
+            print(ss)
             # send_mail(
         
                 
             #     'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
             #     'hello thank you for purchasing order id is x', #message
             #     'priyanshuparashar223@gmail.com', #from email
-            #     [y], #To email
+            #     [ss], #To email
             #     fail_silently=False
                 
             # )
@@ -592,7 +597,8 @@ def a(request):
         
             
             # dic[k]=(Order_item.objects.filter(Order=k))
-        print(ok)           
+        print(ok)
+    x=4           
         
             
                         
@@ -616,6 +622,6 @@ def a(request):
   
 
     
-    return render(request, 'a.html', {'dic':dic})
+    return render(request, 'a.html', {'dic':dic,'x':x})
 
 
