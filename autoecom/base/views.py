@@ -363,7 +363,7 @@ def products(request):
     myFilter=ProductFilter(request.GET, queryset=pro)
     pro=myFilter.qs
     cateories = Category.objects.all()
-    context={'product':pro, 'myFilter':myFilter,'cartItems':cartItems,'cateories':cateories}
+    context={'product':pro, 'myFilter':myFilter,'cartItems':cartItems,'cat':cateories}
     print(context)
     
     
@@ -392,7 +392,7 @@ def products(request):
         )
         
         cateories = Category.objects.all()
-        return render(request, 'products.html', {'product':products, 'myFilter':myFilter,'cateories':cateories})
+        return render(request, 'products.html', {'product':products, 'myFilter':myFilter,'cat':cateories})
     return render(request, 'products.html', context)   
   
         
@@ -569,30 +569,34 @@ def logoutUser(request):
 
 
 def a(request):
-    if request.user.is_authenticated:
-        us=request.user
-        cus=Customer.objects.get(user=us)
-        oor=Order.objects.filter(Customer=cus)
+    cat=Category.objects.all()
+    
+    
+    return render(request, 'a.html', {'cat':cat})
+    # if request.user.is_authenticated:
+    #     us=request.user
+    #     cus=Customer.objects.get(user=us)
+    #     oor=Order.objects.filter(Customer=cus)
         
         
         
         
         
-        dic={}
+    #     dic={}
         
-        for k in oor:
-            ok=Order_item.objects.filter(Order=k)
+    #     for k in oor:
+    #         ok=Order_item.objects.filter(Order=k)
             
-            for o in ok:
-                dic[o]=o.Product
+    #         for o in ok:
+    #             dic[o]=o.Product
                
             
             
         
         
             
-            # dic[k]=(Order_item.objects.filter(Order=k))
-        print(ok)           
+    #         # dic[k]=(Order_item.objects.filter(Order=k))
+    #     print(ok)           
         
             
                         
@@ -616,6 +620,6 @@ def a(request):
   
 
     
-    return render(request, 'a.html', {'dic':dic})
+    
 
 

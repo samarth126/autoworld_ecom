@@ -1,6 +1,109 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load mptt_tags %}
 {% block content %}
+<style>
+    /* .sidebar li .submenu{ 
+	list-style: none; 
+	margin: 0; 
+	padding: 0; 
+	padding-left: 1rem; 
+	padding-right: 1rem;
+} */
+    .card-header {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    }
+
+    .filter-group .card-header {
+        border-bottom: 0
+    }
+
+    .icon-control {
+        margin-top: 6px;
+        float: right;
+        font-size: 80%
+    }
+
+    .list-menu {
+        list-style: none;
+        margin: 0;
+        padding-left: 0
+    }
+
+    .list-menu a {
+        color: #343a40
+    }
+
+    a {
+        text-decoration: none !important;
+        background-color: transparent
+    }
+
+    .checkbox-btn {
+        position: relative
+    }
+
+    .checkbox-btn input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0
+    }
+
+    .checkbox-btn input:checked~.btn {
+        border-color: #3167eb;
+        background-color: #3167eb;
+        color: #fff
+    }
+
+    .btn-light {
+        display: inline-block;
+        font-weight: 600;
+        color: #343a40;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: #eee;
+        border: 1px solid #eee;
+        padding: 0.45rem 0.85rem;
+        font-size: 10px;
+        line-height: 1.5;
+        border-radius: 0.37rem
+    }
+
+    .btn-light:hover {
+        background-color: #fff;
+        border-color: #989898
+    }
+
+    .btn-medium {
+        font-size: 12px;
+        padding: 10px 22px;
+        display: inline-block;
+        margin-right: 20px;
+        letter-spacing: 2px;
+        border: 1px solid #157af6;
+        width: 100%
+    }
+
+    .highlight-button:hover {
+        background-color: #157af6;
+        border: 2px solid #157af6;
+        color: #fff
+    }
+
+    .custom-control {
+        position: relative;
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5rem
+    }
+</style>
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -124,8 +227,44 @@
             </div>
 
             <!-- Side Bar Start -->
-            <div class="col-lg-4 sidebar">
-                <div class="sidebar-widget category">
+            <div class="col-lg-3 sidebar">
+                <div>
+                    <!-- <div class="container-fluid mt-100">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-4"> -->
+                                <div class="">
+                                    {% recursetree cat %}
+                                    <article class="filter-group">
+                                        <header class="card-header"> <a href="goog"
+                                                data-toggle="{% if not node.is_leaf_node %}collapse{% endif %}"
+                                                data-target="{% if not node.is_leaf_node %}#collapse_aside{{node.id}}{% endif %}"
+                                                data-abc="true" aria-expanded="false" class="collapsed"> <i
+                                                    class="icon-control fa fa-chevron-down"></i>
+                                                <h6 class="title"> <i class="fa fa-cogs" aria-hidden="true"></i> {{ node.name }} </h6>
+                                            </a> </header>
+                    
+                                        <div class="filter-content collapse" id="collapse_aside{{node.id}}" style="">
+                                            <div class="card-body">
+                                                {% if not node.is_leaf_node %}
+                                                <ul class="list-menu">
+                    
+                                                    <li><a href="goog" data-abc="true">{{ children }} </a></li>
+                    
+                                                </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </article>
+                                    {% endrecursetree %}
+                    
+                    
+                    
+                                </div>
+                            <!-- </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="sidebar-widget category">
                     <h2 class="title">Category</h2>
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
@@ -137,7 +276,7 @@
                       
                         </ul>
                     </nav>
-                </div>
+                </div> -->
 
 
 
