@@ -93,6 +93,8 @@ def cod(request):
         items =[]
         order ={'get_cart_total':0, 'get_cart_items':0}
     context={'customers':customers, 'items':items, 'order':order}
+    
+    
     return render(request, 'cod.html', context)
 
 
@@ -131,7 +133,19 @@ def update_cod(request):
             en=shipping_address(Order=order,Customer=customers,country=country,city=city,state=state,zipcode=zipcode,address=address)
             en.save()
             anni=Order.objects.filter(Customer=customers, status=False).update(price=order.get_cart_total, status=True, cod=True)
-    return render(request, 'cod.html')
+            x=str(order.id)
+            send_mail(
+        
+                
+                'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
+                'hello thank you for purchasing order id is '+x, #message
+                'priyanshuparashar223@gmail.com', #from email
+                [us], #To email
+                fail_silently=False
+                
+            )
+            
+    return HttpResponse("success")
 
 
 
@@ -224,16 +238,16 @@ def handlerequest(request):
             ss=anni.Customer.user
             ann.update(payment_status=True)
             print(ss)
-            # send_mail(
+            send_mail(
         
                 
-            #     'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
-            #     'hello thank you for purchasing order id is x', #message
-            #     'priyanshuparashar223@gmail.com', #from email
-            #     [ss], #To email
-            #     fail_silently=False
+                'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
+                'hello thank you for purchasing order id is '+x, #message
+                'priyanshuparashar223@gmail.com', #from email
+                [ss], #To email
+                fail_silently=False
                 
-            # )
+            )
             print('order successful')
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
@@ -600,14 +614,9 @@ def a(request):
         
         
             
-<<<<<<< HEAD
     #         # dic[k]=(Order_item.objects.filter(Order=k))
-    #     print(ok)           
-=======
-            # dic[k]=(Order_item.objects.filter(Order=k))
-        print(ok)
-    x=4           
->>>>>>> da30202116668f34e580ce03411675eb1a7f6a45
+    #     print(ok)
+    # x=4           
         
             
                         
@@ -631,10 +640,6 @@ def a(request):
   
 
     
-<<<<<<< HEAD
-    
-=======
-    return render(request, 'a.html', {'dic':dic,'x':x})
->>>>>>> da30202116668f34e580ce03411675eb1a7f6a45
+    # return render(request, 'a.html', {'dic':dic,'x':x})
 
 
