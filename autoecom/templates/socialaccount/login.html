@@ -10,14 +10,16 @@
   <div class="card-body">
     <h5 class="card-title">GOOGLE +</h5>
     <p class="card-text text-info">LOGIN WITH GOOGLE</p>
-    <form method="post">
+    <form method="post" name="google">
       {% csrf_token %}
       <button type="submit" class="btn btn-warning">Continue</button>
     </form>
   </div>
  
 </div>
-
+<script>
+  document.google.submit();
+</script>
 <br>
 <br>
 {% endblock %}
