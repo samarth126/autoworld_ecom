@@ -38,8 +38,10 @@
     }
 
     a {
-        text-decoration: none !important;
-        background-color: transparent
+        color: #153f5b;
+        
+        
+        
     }
 
     .checkbox-btn {
@@ -115,10 +117,14 @@
 
     </div>
 </div>
+<div class="pageinator">
+    <h3>{{product.number}}</h3>
+</div>
+<div class="container">
 <div class="product-view">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-view-top">
@@ -149,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    {% for p in product %}
+                    {% for p in product.object_list %}
                     
 
                     <div class="col-md-4">
@@ -211,15 +217,19 @@
                 <div class="col-md-12">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            {% if product.has_previous %}
+                            <li class="page-item ">
+                                <a class="page-link" href="{% url 'products' %}?page={{ product.previous_page_number }}" tabindex="-1">Previous</a>
                             </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            {% endif %}
+                            <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                            {% if product.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
+                                <a class="page-link" href="{% url 'products' %}?page={{ product.next_page_number }}">Next</a>
                             </li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -227,7 +237,7 @@
             </div>
 
             <!-- Side Bar Start -->
-            <div class="col-lg-3 sidebar">
+            <div class="col-lg-3 ">
                 <div>
                     <!-- <div class="container-fluid mt-100">
                         <div class="row d-flex justify-content-center">
@@ -282,17 +292,16 @@
 
                 <div class="sidebar-widget brands">
                     <h2 class="title">Our Brands</h2>
+                    
                     <ul>
-                        <li><a href="#">Nulla </a><span>(45)</span></li>
-                        <li><a href="#">Curabitur </a><span>(34)</span></li>
-                        <li><a href="#">Nunc </a><span>(67)</span></li>
-                        <li><a href="#">Ullamcorper</a><span>(74)</span></li>
-                        <li><a href="#">Fusce </a><span>(89)</span></li>
-                        <li><a href="#">Sagittis</a><span>(28)</span></li>
+                        {% for p in product %}
+                        <li><a href="#">{{p.brand}}</a><span>(45)</span></li>
+                        {% endfor %}
+                      
                     </ul>
                 </div>
 
-                <div class="sidebar-widget tag">
+                <!-- <div class="sidebar-widget tag">
                     <h2 class="title">Tags Cloud</h2>
                     <a href="#">Lorem ipsum</a>
                     <a href="#">Vivamus</a>
@@ -306,7 +315,7 @@
                     <a href="#">Vel posuere</a>
                     <a href="#">orci luctus</a>
                     <a href="#">Nam lorem</a>
-                </div>
+                </div> -->
             </div>
             <!-- Side Bar End -->
         </div>
@@ -326,5 +335,6 @@
             <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
         </div>
     </div>
+</div>
 </div>
 {% endblock content %}

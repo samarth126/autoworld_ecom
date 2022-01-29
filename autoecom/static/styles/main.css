@@ -1493,7 +1493,7 @@ h2 {
 /********** Sidebar CSS ***********/
 /**********************************/
 .sidebar-widget {
-    padding: 30px;
+    padding: 10px;
     background: #ffffff;
 }
 
@@ -1573,7 +1573,7 @@ h2 {
 
 .sidebar-widget.brands ul li a::before {
     content: '\f105';
-    font-family: 'Font Awesome 5 Free';
+    font-family: inherit;
     font-weight: 900;
     padding-right: 5px;
 }
@@ -1584,7 +1584,7 @@ h2 {
 
 .sidebar-widget.brands ul li a:hover::before {
     content: '\f101';
-    font-family: 'Font Awesome 5 Free';
+    font-family: inherit;
     font-weight: 900;
 }
 

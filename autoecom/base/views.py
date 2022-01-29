@@ -18,6 +18,7 @@ from .filters import ProductFilter
 from django.views.decorators.csrf import csrf_exempt
 from paytmchecksum import PaytmChecksum 
 from Crypto.Cipher import AES
+from django.core.paginator import Paginator
 
 # from django.shortcuts import get_object_or_404, render
 
@@ -379,10 +380,14 @@ def products(request):
     else:
         cartItems=0
     pro=Product.objects.prefetch_related("product_image").all()
+    page_num=request.GET.get('page')
+    
     myFilter=ProductFilter(request.GET, queryset=pro)
     pro=myFilter.qs
     cateories = Category.objects.all()
-    context={'product':pro, 'myFilter':myFilter,'cartItems':cartItems,'cat':cateories}
+    porduct_pageinator=Paginator(pro,1)
+    page=porduct_pageinator.get_page(page_num)
+    context={'product':page, 'myFilter':myFilter,'cartItems':cartItems,'cat':cateories}
     print(context)
     
     
@@ -409,9 +414,14 @@ def products(request):
             
             
         )
+        page_num=request.GET.get('page')
+        porduct_pageinator=Paginator(products,1)
+        page=porduct_pageinator.get_page(page_num)
+        page=porduct_pageinator.get_page(page_num)
+        
         
         cateories = Category.objects.all()
-        return render(request, 'products.html', {'product':products, 'myFilter':myFilter,'cat':cateories})
+        return render(request, 'products.html', {'product':page, 'myFilter':myFilter,'cat':cateories})
     return render(request, 'products.html', context)   
   
         
