@@ -114,8 +114,10 @@ def checkout(request):
      return render(request, 'checkout.html', context)
 
 
-def choosepayment(request):
-    return render(request, 'choosepayment.html')
+
+
+def cod_status(request):
+    return render(request, 'cod_status.html')
 
 
 
@@ -145,8 +147,8 @@ def update_cod(request):
                 fail_silently=False
                 
             )
-            
-    return HttpResponse("success")
+            context={'order':order,'us':us}
+    return render(request, 'cod_status.html',context)
 
 
 
@@ -230,6 +232,12 @@ def handlerequest(request):
             checksum = form[i]
     
     x=request.POST.get('ORDERID')
+    bank_name=request.POST.get('BANKNAME')
+    bank_txn_id=request.POST.get('BANKTXNID')
+    txn_id=request.POST.get('TXNID')
+    txn_amt=request.POST.get('TXNAMOUNT')
+    txn_date=request.POST.get('TXNDATE')
+
     
     verify = PaytmChecksum.verifySignature(response_dict, Paytm_Key,checksum)
     if verify:
@@ -238,6 +246,8 @@ def handlerequest(request):
             anni=Order.objects.get(id=x)
             ss=anni.Customer.user
             ann.update(payment_status=True)
+            trans=Transaction(order=anni, txn_id=txn_id, bank_txn_id=bank_txn_id, bank_name=bank_name, txn_amt=txn_amt, txn_date=txn_date)
+            trans.save()
             print(ss)
             send_mail(
         

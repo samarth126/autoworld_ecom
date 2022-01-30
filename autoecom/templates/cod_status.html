@@ -1,0 +1,63 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<style>
+    .vv {
+        color: #9ABC66;
+        font-size: 80px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .ff {
+        color: black;
+        font: weight 3px;;
+        font-size: 30px;
+        line-height: 20px;
+        margin-left:-15px;
+      }
+      .vvx {
+        color: red;
+        font-size: 80px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .cc{
+        background-color: #7fffd4;
+        color: black;
+        padding: 1em 1.5em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+</style>
+
+
+
+
+<div class="container">
+    <br>
+    <!-- {{response}} -->
+    <div class="col my-4">
+        <div class="text-center"> <h2>Thank you {{us}} for shopping with us your Order id is {{order}}</h2></div>
+
+        <br>
+        <div class="text-center"><a class="cc" href="{% url 'home' %}">GO TO HOME PAGE</a></div>
+        <br>
+
+        <div class="text-center">
+            <i class="vv" >Order Success ✓</i>
+           </div>
+      
+
+        
+    </div>
+
+</div>
+
+
+
+
+ {% endblock %}
