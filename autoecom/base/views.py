@@ -183,13 +183,13 @@ def update_checkout(request):
 
             # param_dict = {}
             param_dict = {
-
+                
                 'MID': Paytm_id,
-                'WEBSITE': 'WEBSTAGING',
                 'ORDER_ID': str(order_id),
-                'CUST_ID':str(emm),
                 'TXN_AMOUNT': str(total_price),
+                'CUST_ID': str(emm),
                 'INDUSTRY_TYPE_ID': 'Retail',
+                'WEBSITE': 'WEBSTAGING',
                 'CHANNEL_ID': 'WEB',
                 'CALLBACK_URL':'http://127.0.0.1:8000/handlerequest/',
 
