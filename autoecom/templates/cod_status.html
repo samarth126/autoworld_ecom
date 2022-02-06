@@ -1,7 +1,9 @@
+
 {% extends 'base.html' %}
 
-
 {% block content %}
+
+
 
 <style>
     .vv {
@@ -33,36 +35,29 @@
 </style>
 
 
+
+
 <div class="container">
     <br>
     <!-- {{response}} -->
     <div class="col my-4">
-        <div class="text-center"> <h2>Payment Status Regarding Your Order Id {{response.ORDERID}}</h2></div>
+        <div class="text-center"> <h2>Thank you {{us}} for shopping with us your Order id is {{order}}</h2></div>
 
         <br>
         <div class="text-center"><a class="cc" href="{% url 'home' %}">GO TO HOME PAGE</a></div>
         <br>
 
-        {% if response.RESPCODE == '01' %}
         <div class="text-center">
             <i class="vv" >Order Success ✓</i>
            </div>
-        {% else %}
-        <div class="text-center">
-            <i class="vvx" >Order Faliure X</i>
-           </div>
-            {% endif%}
-            {{response_dict}}
-            {% for key, value in response.items %}
-            <div class="text-center">
-                <i class="ff" >{{key}} - {{value}}</i><br>
-               </div>
-               {% endfor %}
+      
+
+        
     </div>
 
 </div>
-<script>
-</script>
 
 
-{% endblock %}
+
+
+ {% endblock %}

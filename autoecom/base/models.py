@@ -222,10 +222,23 @@ class Order_item(models.Model):
         total = self.Product.regular_price * self.quantity
         return total
 
+
 class Message(models.Model):
     Customer=models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     real_message = models.TextField(blank=True, null=True)
+
+
+class Transaction(models.Model):
+    order=models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    bank_name=models.CharField(max_length=50)
+    txn_id=models.CharField(max_length=200)
+    txn_amt=models.CharField(max_length=20)
+    txn_date=models.CharField(max_length=50)
+    bank_txn_id=models.CharField(max_length=30)
+
+    def __str__(self):
+        return str(self.order)
 
 
 
