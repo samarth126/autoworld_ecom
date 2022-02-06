@@ -383,6 +383,7 @@ def products(request):
     page_num=request.GET.get('page')
     
     myFilter=ProductFilter(request.GET, queryset=pro)
+    from_class=ProductFilter
     pro=myFilter.qs
     cateories = Category.objects.all()
     porduct_pageinator=Paginator(pro,1)
