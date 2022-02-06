@@ -7,12 +7,38 @@
 
 
 
-<div class="container-fluid">
+<div >
+  <div id="bg" style="height: 500px; background-color: #15191e;" >
+  
+  <section class="hero d-flex flex-column justify-content-center align-items-center" >
+  
+    <div class="bg-overlay"></div>
+  
+    <div class="container">
+      <div class="row">
+  
+        <div class="col-lg-8 col-md-10 mx-auto col-12">
+          <div class="hero-text  text-center" style="margin-top: 120px;">
+            <img src="{% static 'img/banner47.png' %}" height="200px" width="300px">
+  
+            <h6 data-aos="fade-up" data-aos-delay="300">Get the spare parts with exclusive offers!</h6>
+  
+            <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Get the spare parts with exclusive offers!</h1>
+  
+            <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Get started</a>
+  
+            <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">learn more</a>
+  
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+    
   
     
-    
-  <div class="row">
-    <div id="carouselExampleIndicators" class="carousel slide col-md-8" data-ride="carousel">
+    <!-- <div id="carouselExampleIndicators" class="carousel slide col-md-12" data-ride="carousel" >
         <ol class="carousel-indicators ">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -20,13 +46,18 @@
         </ol>
         <div class="carousel-inner ">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="{% static 'img/struck.png' %}" alt="First slide" height="400px">
+            
+            <img class="d-block w-100" src="{% static 'img/banner45.png' %}" alt="First slide" >
+            <div class="carousel-caption d-none d-md-block">
+              <h5>hello</h5>
+              
+            </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="{% static 'img/slider.png' %}" alt="Second slide" height="400px">
+            <img class="d-block w-100" src="{% static 'img/back.jpg' %}" alt="Second slide" height="500px">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="{% static 'img/struck.png' %}" alt="Second slide" height="400px">
+            <img class="d-block w-100" src="{% static 'img/banner232.png' %}" alt="Second slide" height="500px">
           </div>
          
         </div>
@@ -38,44 +69,22 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-      </div>
+      </div> -->
       
-      <div class="col-md-4">
-        <form method="get" action="products">
-      <div class="form-group">
-        <br>
       
-        <label for="exampleFormControlSelect1">Select Manufacturer</label>
-        <div class="form-control">{{ myFilter.form.manufacturer }}</div>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Select Model</label>
-        <div class="form-control">{{ myFilter.form.vmodel }}
-
-        </div>
-       
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Select Variant-year</label>
-        <div class="form-control">{{ myFilter.form.myear }}</div>
-      </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Select Fuel-Engine</label>
-          <div class="form-control">{{ myFilter.form.category }}</div>
-        </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block"> search</button>
-      </form>
-      </div>
-      </div>
+     
     </div>
 
   <br>
   <br>
-  <br>
- 
+
+
     </div>
     <br>
     <br>
+    </div>
+
+  
 
 
   <div class="container">
@@ -83,6 +92,7 @@
     <div class="product">
       <div class="section-header">
           <h1>Search by Brands</h1>
+          <hr style="width:100px" , size="2" , color=black>
       </div>
 
     <div class="row">
@@ -94,6 +104,11 @@
       }
       .sil:hover{
         color:#5e8adb;
+      }
+      #underline{
+        size: 10px;
+
+
       }
   </style>    
 
@@ -124,15 +139,16 @@
     </div>
   </div>
 
-    <br>
-    <br>
-    <br>
+  
 
 
   <div class="container-fluid">
     <div class="product">
       <div class="section-header">
+      
           <h1>Categories</h1>
+          <hr style="width:100px", size="2", color=black>
+          
       </div>
     <ul class="cards">
       <div class="row">

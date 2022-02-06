@@ -50,9 +50,69 @@
 
 <body>
 {% include 'nav.html' %}
+<style>
+    div#google_translate_element div.goog-te-gadget-simple {
+        font-size: 14px;
+        font-family: Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+        font-weight: 600;
+    }
 
-<div id="google_translate_element"></div>
+    div#google_translate_element div.goog-te-gadget-simple {
+        background-color: #0f2027;
+    }
+
+    div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value span {
+        pass
+        
+        
+    }
+
+    div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value span{
+        color: white;
+        padding-right: 2px;
+    }
+
+    div#google_translate_element div.goog-te-gadget-simple {
+        border: none;
+    }
+    div#google_translate_element div .goog-te-menu2-item {
+        background-color: deeppink;
+        border: none;
+    }
+    .goog-te-gadget img {
+    vertical-align: middle;
+    border: none;
+    display: none;
+}
+
+</style>
+
+
+<div id="google_translate_element">
+
+
+</div>
 <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
+    }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+    function translate(lang) {
+
+        var $frame = $('.goog-te-menu-frame:first');
+        if (!$frame.size()) {
+            alert("Error: Could not find Google translate frame.");
+            return false;
+        }
+        $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+        return false;
+    }
+</script>
+<!-- <script type="text/javascript">
     function googleTranslateElementInit() {
         new google.translate.TranslateElement(
             { pageLanguage: 'en' },
@@ -63,7 +123,7 @@
 
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
 		cb=googleTranslateElementInit">
-        </script>
+        </script> -->
 
 
 

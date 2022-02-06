@@ -2,10 +2,23 @@
 /********** General CSS ***********/
 /**********************************/
 body {
-    color: #353535;
-    font-family: lato,sans-serif;
+    color: rgb(0, 0, 0);
+    font-family:'Times New Roman';
     font-weight: 400;
     background: #ffffff;
+    font-size: 16px;
+    line-height: normal;
+}
+a{
+    color: #0f2027;
+}
+
+hr{
+  margin-top: 20px;
+  padding: 2px 0;
+  border: none;
+  background-color: #195985;
+  letter-spacing: 5px;
 }
 
 .table-bordered td, .table-bordered th{
@@ -212,13 +225,14 @@ a:focus {
 }
 
 h1 {
-    font-family: "Roboto",sans-serif!important;
-    font-weight: 700;
+    font-family:'Times New Roman';
+    font-weight: 400;
+  
 }
 
 h2 {
-    font-family: Roboto;
-    font-weight: 700;
+  font-family:'Times New Roman';
+    font-weight: 400;
 }
 
 @media(min-width: 992px) {
