@@ -106,6 +106,7 @@
         padding-left: 1.5rem
     }
 </style>
+
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -133,16 +134,16 @@
                           
                             <form  method="get" class=" justify-content-center">
                                 <div class="form-group">
-                                <b> <i>Vehical Type:</i> </b>
+                               <i>Vehical Type:</i> 
                                 {{ myFilter.form.vehicaltype }}
-                                <b> <i>Manufacturer:</i> </b>
+                             <i>Manufacturer:</i> 
                                 {{ myFilter.form.manufacturer }}
-                                <b> <i>Vehical Model:</i> </b>
+                             <i>Vehical Model:</i> 
                                 
                                 {{ myFilter.form.vmodel }}<br><br>
-                                <b> <i>Model Year:</i> </b>
+                             <i>Model Year:</i> 
                                 {{ myFilter.form.myear }}
-                                <b> <i>Category</i> </b>
+                             <i>Category</i> 
                                 {{ myFilter.form.category }}
                             
                                 </div>
@@ -202,11 +203,15 @@
 
                                     {{p.regular_price}}
                                
-                                    <button data-product="{{p.id}}" data-action="add" class="btn update-cart">
-                                    
-                                        <i class="fa fa-shopping-cart"></i>Add to cart
-                                    
-                                    </button>
+
+                                    {% if not request.user.is_authenticated %}
+                                    <a href="{% url 'loginr' %}"><button  class="btn "><i class="fa fa-shopping-cart"></i>Add to cart</button></a>
+                                    {% endif %}
+
+                                    {% if request.user.is_authenticated %}
+                                    <button data-product="{{p.id}}" data-action="add" class="btn update-cart"><i class="fa fa-shopping-cart"></i>Add to cart </button>
+                                    {% endif %}        
+                            
                                     
 
                              

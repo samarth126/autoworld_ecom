@@ -117,11 +117,13 @@
     }
 </style>
                                         <div class="action">
-                                     <button data-product="{{p.id}}" data-action="add" class="btn ss update-cart">
+                                            {% if not request.user.is_authenticated %}
+                                            <a href="{% url 'loginr' %}"><button class="btn ss"><i class="fa fa-shopping-cart"></i> Add to cart </button></a>
+                                            {% endif %}
+                                            {% if request.user.is_authenticated %}
+                                            <button data-product="{{p.id}}" data-action="add" class="btn ss update-cart"><i class="fa fa-shopping-cart"></i> Add to cart </button>
+                                            {% endif %}
                                     
-                                                <i class="fa fa-shopping-cart"></i> Add to cart
-                                            
-                                            </button>
                                           
 
                                         </div>

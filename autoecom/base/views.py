@@ -142,7 +142,7 @@ def update_cod(request):
                 
                 'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
                 'hello thank you for purchasing order id is '+x, #message
-                'priyanshuparashar223@gmail.com', #from email
+                'bharatautosolution81@gmail.com', #from email
                 [us], #To email
                 fail_silently=False
                 
@@ -254,7 +254,7 @@ def handlerequest(request):
                 
                 'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
                 'hello thank you for purchasing order id is '+x, #message
-                'priyanshuparashar223@gmail.com', #from email
+                'bharatautosolution81@gmail.com', #from email
                 [ss], #To email
                 fail_silently=False
                 

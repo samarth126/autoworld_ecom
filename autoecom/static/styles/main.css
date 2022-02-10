@@ -2605,6 +2605,7 @@ h2 {
 .footer-bottom .copyright p a,
 .footer-bottom .template-by p a {
     font-weight: 600;
+    color:white;
 }
 
 .footer-bottom .copyright p a:hover,
