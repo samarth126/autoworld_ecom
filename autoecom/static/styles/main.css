@@ -75,7 +75,7 @@ hr{
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
-  float: right;
+  
 }
 .nav-side-menu ul .active,
 .nav-side-menu li .active {
@@ -415,6 +415,7 @@ h2 {
 /**********************************/
 .top-bar {
     padding: 2px 1px;
+    padding-top: 5px;
     font-size: 13px;
     color: #F5F5F5;
     background: #0F2027;
@@ -422,6 +423,7 @@ h2 {
 
 .top-bar i {
     margin-right: 5px;
+    margin-left: 5px;
 }
 
 .top-bar .col-sm-6:first-child {
