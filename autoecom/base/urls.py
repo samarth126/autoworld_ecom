@@ -31,6 +31,7 @@ urlpatterns = [
     # path('cat/<slug:slug>/', views.cat, name='cat'),
     path('type/', views.type, name='type'),
     path('a/', views.a, name='a'),
+    path('about/', views.about, name='a'),
 
     path('category/<slug:slug>/', views.category, name='category'),
 

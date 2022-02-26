@@ -546,9 +546,8 @@ def category(request, slug=None):
 
 
 
-
-
-
+def about(request):
+    return render(request, 'about.html')
 
 
 
