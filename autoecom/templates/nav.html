@@ -33,19 +33,20 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto">
                     <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-                    <a href="{% url 'products' %}"" class="nav-item nav-link">Products</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link ">About</a>
+                    <a href="{% url 'products' %}" class="nav-item nav-link">Products</a>
                     <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
                     <a href="{% url 'cart' %}" class="nav-item nav-link">Cart</a>
                     <a href="{% url 'user_profile' %}" class="nav-item nav-link">My Account</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
-                        <div class="dropdown-menu">
-                            <a href="wishlist.html" class="dropdown-item">Wishlist</a>
-                            <a href="login.html" class="dropdown-item">Login & Register</a>
-                            <a href="contact.html" class="dropdown-item">Contact Us</a>
-                          
-                        </div>
-                    </div>
+                    {% if  request.user.is_authenticated %}
+                    <a href="{% url 'support' %}" class="nav-item nav-link ">Support</a>
+                    {% endif %}
+                    
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Contact Us
+  </button>
+                    
                 </div>
                 <div class="navbar-nav ml-auto">
                     <div class="nav-item dropdown">

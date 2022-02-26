@@ -229,6 +229,28 @@ class Message(models.Model):
     real_message = models.TextField(blank=True, null=True)
 
 
+class Support(models.Model):
+    sender=models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    s_name=models.TextField(null=True)
+    s_email=models.EmailField(null=False)
+    s_message=models.TextField(null=True)
+    s_detail=models.CharField(max_length=20,null=True)
+    s_created_at=models.DateTimeField(auto_now_add=True)
+    
+    def _str_(self):
+        return str(self.s_name)
+
+
+class Contact(models.Model):
+    name=models.CharField(max_length=20,null=True)
+    email=models.CharField(max_length=20,null=True)
+    phone_no=models.CharField(max_length=20,null=True)
+    message=models.TextField(null=True)
+
+    def _str_(self):
+        return str(self.name)
+
+
 class Transaction(models.Model):
     order=models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     bank_name=models.CharField(max_length=50)

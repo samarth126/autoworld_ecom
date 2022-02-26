@@ -550,6 +550,53 @@ def about(request):
     return render(request, 'about.html')
 
 
+def privacy(request):
+    return render(request, 'privacy.html')
+
+
+def support(request):
+    if request.user.is_authenticated:
+        sen=request.user
+        customer = request.user.customer
+        if request.method == 'POST':
+            s_name=request.POST.get('s_name')
+            s_email=request.POST.get('s_email')
+            s_message=request.POST.get('s_message')
+            s_detail=request.POST.get('s_detail')
+
+            en=Support(sender=customer ,s_name=s_name, s_email=s_email, s_message=s_message, s_detail=s_detail)
+            en.save()
+                
+                
+                
+            send_mail(
+        
+                
+                'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
+                'hello thank you for purchasing order id is ', #message
+                'bharatautosolution81@gmail.com', #from email
+                [sen], #To email
+                fail_silently=False
+                
+            )
+
+            return redirect('home')
+    
+    return render(request, 'support.html')
+
+
+
+def contact(request):
+    if request.method == 'POST':
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        phone_no=request.POST.get('phone_no')
+        message=request.POST.get('message')
+        enn=Contact(name=name,email=email,phone_no=phone_no,message=message)
+        enn.save()
+        return redirect('home')
+    return render(request, 'support.html')
+
 
 
 
@@ -575,7 +622,7 @@ def register(request):
 
 def loginr(request):
     if request.user.is_authenticated:
-        return HttpResponse("okok")
+        return redirect('home')
     if request.method == 'POST':
         emailw = request.POST.get('email')
         passs = request.POST.get('password') 

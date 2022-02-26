@@ -16,6 +16,8 @@ admin.site.register(shipping_address)
 # admin.site.register(Order_status)
 admin.site.register(Order)
 admin.site.register(Order_item)
+admin.site.register(Contact)
+admin.site.register(Support)
 
 # admin.site.register(Tri)
 

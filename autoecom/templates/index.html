@@ -38,6 +38,97 @@
 </div>
       
       
+
+
+
+
+<br>
+<br>
+<br>
+
+<div class="container">
+               
+    <div class="section-header">
+        <h1>Autoworld Advantage</h1>
+        <hr style="width:100px" , size="2" , color=black>
+    </div>
+ 
+
+<div class="row">
+  <!-- Boxes de Acoes -->
+
+  <div class="col-xs-12 col-sm-6 col-lg-4">
+<div class="box">							
+  <div class="icon">
+    <div class="image"><i class="fas fa-truck "></i></div>
+    <div class="info"><br>
+      <h3 class="title"><b>On Time Delivery</b></h3>
+        <p align="justify">
+        Our firm constantly endeavors to be the diligent Accounting and Consultancy firm that offers substantial support to our clients and great personal satisfaction for our partners.
+      </p>
+      <div class="more">
+        <a href="{url 'about'}" title="Title Link">
+          Read More <i class="fa fa-angle-double-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="space"></div>
+</div> 
+</div>
+
+
+
+
+  <div class="col-xs-12 col-sm-6 col-lg-4">
+<div class="box">							
+  <div class="icon">
+    <div class="image"><i class="fa fa-trophy "></i></div>
+    <div class="info"><br>
+      <h3 class="title"><b>Our Mission</b></h3>
+        <p align="justify">
+        We will vigorously work with associations in the generous and deliberate sectors, as associates could assist them with accomplishing their desired results.
+</p>
+      <div class="more">
+        <a href="pages/about.php" title="Title Link">
+          Read More <i class="fa fa-angle-double-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="space"></div>
+</div> 
+</div>
+
+
+
+
+
+  <div class="col-xs-12 col-sm-6 col-lg-4">
+<div class="box">							
+  <div class="icon">
+    <div class="image"><i class="fa fa-clock-o"></i></div>
+    <div class="info"><br>
+      <h3 class="title"><b>Our Objective</b></h3>
+        <p align="justify">
+        We are focused and committed to creating and supporting long-term associations that are drawn on our practice and ability to assist our clients while making growth.
+          </p>
+      <div class="more">
+        <a href="pages/about.php" title="Title Link">
+          Read More <i class="fa fa-angle-double-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="space"></div>
+</div> 
+</div>		    
+<!-- /Boxes de Acoes -->
+</div>
+</div>
+
+
+
      
 
   
@@ -278,6 +369,81 @@
 <br>
 <br>
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Make an Enquiry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{% url 'contact' %}" >
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Phone no.</label>
+            <input type="phone" name="phone_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Message</label>
+            <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+
+        
+          <button type="submit" class="btn btn-primary">Submit</button>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=919302814372&text=Hello,%20welcome%20to%20the%20AUTOWORLD%20,%20How%20can%20we%20help%20you%20today%20" class="float" target="_blank">
+  <i class="fa fa-whatsapp my-float"></i>
+</a>
+
+<style>
+
+
+/*-------whatsapp integration------*/
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:5%;
+	right:92%;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+</style>
      
 
 
