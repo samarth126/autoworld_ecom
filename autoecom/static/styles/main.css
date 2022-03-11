@@ -1087,9 +1087,9 @@ h2 {
     height: 30px;
     z-index: 1;
     transition: .5s;
-    color: #FF6F61;
+    color: #2980B9;
     background: #ffffff;
-    border: 1px solid #FF6F61;
+    border: 1px solid #2980B9;
     border-radius: 4px;
 }
 
@@ -1105,7 +1105,7 @@ h2 {
 .product .slick-prev:focus,
 .product .slick-next:hover,
 .product .slick-next:focus {
-    background: #FF6F61;
+    background: #2980B9;
 }
 
 .product .slick-prev::before,
@@ -1113,7 +1113,7 @@ h2 {
     font-family: "Font Awesome 5 Free";
     font-size: 18px;
     font-weight: 900;
-    color: #FF6F61;
+    color: #2980B9;
 }
 
 .product .slick-prev::before {
@@ -2776,7 +2776,7 @@ h2 {
 
 
 .box > .icon { text-align: center; position: relative; }
-.box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 50%; background: #63B76C; vertical-align: middle; }
+.box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 50%; background: #16415E; vertical-align: middle; }
 .box > .icon:hover > .image { background: #333; }
 .box > .icon > .image > i { font-size: 36px !important; color: #fff !important; }
 .box > .icon:hover > .image > i { color: white !important; }
@@ -2784,9 +2784,9 @@ h2 {
 .box > .icon:hover > .info { background: rgba(0, 0, 0, 0.04); border-color: #e0e0e0; color: white; }
 .box > .icon > .info > h3.title { font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; }
 .box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
-.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a { color: #222; }
+.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a { color: #2980B9; }
 .box > .icon > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
-.box > .icon:hover > .info > .more > a { color: #fff; padding: 6px 8px; background-color: #63B76C; }
+.box > .icon:hover > .info > .more > a { color: #fff; padding: 6px 8px; background-color: #16415E; }
 .box .space { height: 30px; }
 
 
