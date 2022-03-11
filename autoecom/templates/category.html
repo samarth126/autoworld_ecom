@@ -2,11 +2,13 @@
 {% block content %}
 
 
+
+
 <div class="container">
 
     <div class="product">
         <div class="section-header">
-            <h1>Search by Categories</h1>
+            <h1>{% if page == 'cate' %} Search by Categories{% else %} Search by Brand {% endif %}</h1>
         </div>
 
         <div class="row">
@@ -59,4 +61,8 @@
     </div>
     
 
-    {% endblock %}
+    
+
+
+
+{% endblock %}

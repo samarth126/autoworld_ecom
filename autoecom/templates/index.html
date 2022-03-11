@@ -159,14 +159,14 @@
       }
   </style>    
 
-        {% for cateorie in cateories %}
+        {% for br in products %}
        
         <div class="col-sm-3">
-          <a href="{% url 'category' slug=cateorie.slug %}">
+          <a href="{% url 'category' slug=br.brand kt='brand' %}">
         <div class="card  shadow p-3 mb-5 bg-white rounded" style="width: 14rem; height: fit-content;">
         
           <div class="card-body">
-            <p class="card-title text-center">{{cateorie.name}}</p>
+            <p class="card-title text-center">{{br.brand}}</p>
         
         
           </div>
@@ -203,7 +203,7 @@
           <div class="col-md-3">
       
           <li style="display: inline;">
-            <a href="{% url 'category' slug=cateorie.slug %}" class="card">
+            <a href="{% url 'category' slug=cateorie.slug kt='a' %}" class="card">
               <img src="{{cateorie.image.url}}" class="card__image" alt="" />
               <div class="card__overlay">
                 <div class="card__header">

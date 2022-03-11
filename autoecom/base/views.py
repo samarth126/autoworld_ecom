@@ -65,6 +65,7 @@ def home(request):
     loop=range(1,8)
     # message = Message.objects.all()
     
+    
     return render(request, 'index.html', {'loop':loop,'products':products,'cartItems':cartItems, 'cateories':cateories, 'myFilter':myFilter })
 
 def cart(request):
@@ -398,7 +399,9 @@ def products(request):
     cateories = Category.objects.all()
     porduct_pageinator=Paginator(pro,1)
     page=porduct_pageinator.get_page(page_num)
-    context={'product':page, 'myFilter':myFilter,'cartItems':cartItems,'cat':cateories}
+    BR=Product.objects.all()
+    
+    context={'product':page, 'myFilter':myFilter,'cartItems':cartItems,'cat':cateories,'br':BR}
     print(context)
     
     
@@ -421,7 +424,8 @@ def products(request):
             Q(title__icontains=q) |
             Q(desc__icontains=q)  |
             Q(vmodel__model_name__icontains=q) |
-            Q(vehicaltype__type_of__icontains=q)
+            Q(vehicaltype__type_of__icontains=q) |
+            Q(category__name__icontains=q)
             
             
         )
@@ -432,7 +436,8 @@ def products(request):
         
         
         cateories = Category.objects.all()
-        return render(request, 'products.html', {'product':page, 'myFilter':myFilter,'cat':cateories})
+        BR=Product.objects.all()
+        return render(request, 'products.html', {'product':page, 'myFilter':myFilter,'cat':cateories, 'br':BR})
     return render(request, 'products.html', context)   
   
         
@@ -537,14 +542,23 @@ def myear(request, slug=None, pk=None, *args, **kwargs):
 
 
 
-def category(request, slug=None):
-    cate=Category.objects.get(slug=slug)
-    products=Product.objects.filter(category=cate.id)
-    print (slug)
-    return render(request, 'category.html', {'pro':products})
+def category(request, slug=None, kt=None):
+    if kt == 'brand':
+        products=Product.objects.filter(brand=slug)
+        page="brand"
+        
+        
+    else:
+        
+        cate=Category.objects.get(slug=slug)
+        products=Product.objects.filter(category=cate.id)
+        print (slug)
+        page="cate"
+    return render(request, 'category.html', {'pro':products, 'page':page})
 
 
-
+  
+  
 
 def about(request):
     return render(request, 'about.html')

@@ -267,11 +267,11 @@
                                 <div class="">
                                     {% recursetree cat %}
                                     <article class="filter-group">
-                                        <header class="card-header"> <a href="goog"
+                                        <header class="card-header"> <a href="{% url 'category' slug=node.slug kt='a' %}"
                                                 data-toggle="{% if not node.is_leaf_node %}collapse{% endif %}"
                                                 data-target="{% if not node.is_leaf_node %}#collapse_aside{{node.id}}{% endif %}"
-                                                data-abc="true" aria-expanded="false" class="collapsed"> <i
-                                                    class="icon-control fa fa-chevron-down"></i>
+                                                data-abc="true" aria-expanded="false" class="collapsed"> 
+                                                   <i class="icon-control fa fa-chevron-down"></i>
                                                 <h6 class="title"> <i class="fa fa-cogs" aria-hidden="true"></i> {{ node.name }} </h6>
                                             </a> </header>
                     
@@ -280,7 +280,7 @@
                                                 {% if not node.is_leaf_node %}
                                                 <ul class="list-menu">
                     
-                                                    <li><a href="goog" data-abc="true">{{ children }} </a></li>
+                                                    <li><a href="{% url 'category' slug=node.slug kt='a' %}"  data-abc="true">{{ children }} </a></li>
                     
                                                 </ul>
                                                 {% endif %}
@@ -316,8 +316,8 @@
                     <h2 class="title">Our Brands</h2>
                     
                     <ul>
-                        {% for p in product %}
-                        <li><a href="#">{{p.brand}}</a><span>(45)</span></li>
+                        {% for p in br %}
+                        <li><a href="{% url 'category' slug=p.brand kt='b' %}">{{p.brand}}</a><span>(45)</span></li>
                         {% endfor %}
                       
                     </ul>
