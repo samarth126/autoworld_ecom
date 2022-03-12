@@ -57,6 +57,7 @@ def home(request):
         
     
     products = Product.objects.all()
+    brad = Product.objects.all().values('brand').distinct()
     cateories = Category.objects.all()
     pro=Product.objects.prefetch_related("product_image").all()
     myFilter=ProductFilter(request.GET, queryset=pro)
@@ -66,7 +67,7 @@ def home(request):
     # message = Message.objects.all()
     
     
-    return render(request, 'index.html', {'loop':loop,'products':products,'cartItems':cartItems, 'cateories':cateories, 'myFilter':myFilter })
+    return render(request, 'index.html', {'loop':loop,'products':products,'brad':brad,'cartItems':cartItems, 'cateories':cateories, 'myFilter':myFilter })
 
 def cart(request):
     if request.user.is_authenticated:
