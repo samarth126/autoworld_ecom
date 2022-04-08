@@ -8,6 +8,7 @@ import json
 from django.core.mail import send_mail
 from django.db.models import *
 from django.contrib.auth.forms import UserCreationForm
+from matplotlib.style import context
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
@@ -19,6 +20,7 @@ from django.views.decorators.csrf import csrf_exempt
 from paytmchecksum import PaytmChecksum 
 from Crypto.Cipher import AES
 from django.core.paginator import Paginator
+from Pdf_so import pdf_so
 
 # from django.shortcuts import get_object_or_404, render
 
@@ -350,6 +352,37 @@ def update_acc(request):
 
     return render (request, 'user_profile/dashboard.html')
 
+
+
+
+def gen_pdf_page(request):
+
+    return render (request, 'pdf_gen.html')
+
+
+
+def gen_pdf(request):
+     if request.user.is_authenticated:
+        customer = request.user.customer
+        cartItems= nav(HttpRequest, customer)
+     else:
+        cartItems=0
+     response = HttpResponse(content_type='application/pdf')
+     response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+     o_id = Order.objects.get(Customer=customer, status=False)
+     total=o_id.get_cart_total
+     qnt=o_id.get_cart_items
+     itemes = Order_item.objects.filter(Order=o_id)
+     pd=[]
+     for i in itemes:
+         x = Product.objects.get(id=i.Product.id)
+         pd.append(x.title)
+
+     c_name=str(customer.first_name + ' ' + customer.last_name)
+     phone=request.user.phone_no
+     x=pdf_so.pdff(response,c_name,o_id,pd,total,phone,qnt)
+     context={}
+     return x
 
 
 

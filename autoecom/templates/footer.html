@@ -9,9 +9,9 @@
                 <div class="footer-widget">
                     <h2>Get in Touch</h2>
                     <div class="contact-info">
-                        <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                        <p><i class="fa fa-envelope"></i>email@example.com</p>
-                        <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                        <p><i class="fa fa-map-marker"></i>279, Transport Nagar, Indore, Madhya Pradesh 452014</p>
+                        <p><i class="fa fa-envelope"></i>bharatautosolution81@gmail.com</p>
+                        <p><i class="fa fa-phone"></i>+91 9302814372</p>
                     </div>
                 </div>
             </div>
@@ -35,9 +35,9 @@
                 <div class="footer-widget">
                     <h2>Company Info</h2>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                        <li><a href="{% url 'support' %}">Support</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,9 +46,9 @@
                 <div class="footer-widget">
                     <h2>Purchase Info</h2>
                     <ul>
-                        <li><a href="#">Pyament Policy</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="{% url 'contact' %}">contact</a></li>
+                        <li><a href="{% url 'products' %}">Products</a></li>
+                        <li><a href="{% url 'home' %}">Home page</a></li>
                     </ul>
                 </div>
             </div>
