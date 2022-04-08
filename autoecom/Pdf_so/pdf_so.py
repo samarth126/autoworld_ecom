@@ -1,6 +1,9 @@
 
 # Importing Required Module
 from reportlab.pdfgen import canvas
+from datetime import date
+
+today = date.today()
 
 def pdff(response,c_name,o_id,pd,total,phone,qnt):
     # orer_id,product_name, qunatity, T_price
@@ -50,7 +53,7 @@ def pdff(response,c_name,o_id,pd,total,phone,qnt):
     c.drawRightString(105,70, str(o_id) )
 
     c.drawRightString(70,80,"DATE :")
-    c.drawRightString(105,80,"05/12/22")
+    c.drawRightString(105,80,str(today))
 
     c.drawRightString(70,90,"CUSTOMER NAME :")
     c.drawRightString(105,90,c_name)
@@ -99,4 +102,5 @@ def pdff(response,c_name,o_id,pd,total,phone,qnt):
     # End the Page and Start with new
     c.showPage()
     # Saving the PDF
+    c.save()
     return response
