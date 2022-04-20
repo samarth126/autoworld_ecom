@@ -361,28 +361,28 @@ def gen_pdf_page(request):
 
 
 
-def gen_pdf(request):
-     if request.user.is_authenticated:
+def gen_pdf(request, pd=None):
+    if request.user.is_authenticated:
         customer = request.user.customer
         cartItems= nav(HttpRequest, customer)
-     else:
+    else:
         cartItems=0
-     response = HttpResponse(content_type='application/pdf')
-     response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
-     o_id = Order.objects.get(Customer=customer, status=False)
-     total=o_id.get_cart_total
-     qnt=o_id.get_cart_items
-     itemes = Order_item.objects.filter(Order=o_id)
-     pd=[]
-     for i in itemes:
-         x = Product.objects.get(id=i.Product.id)
-         pd.append(x.title)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+    o_id = Order.objects.get(id=pd)
+    total=o_id.get_cart_total
+    qnt=o_id.get_cart_items
+    itemes = Order_item.objects.filter(Order=o_id)
+    pdd=[]
+    for i in itemes:
+        x = Product.objects.get(id=i.Product.id)
+        pdd.append(x.title)
 
-     c_name=str(customer.first_name + ' ' + customer.last_name)
-     phone=request.user.phone_no
-     x=pdf_so.pdff(response,c_name,o_id,pd,total,phone,qnt)
-     context={}
-     return x
+    c_name=str(customer.first_name + ' ' + customer.last_name)
+    phone=request.user.phone_no
+    x=pdf_so.pdff(response,c_name,o_id,pdd,total,phone,qnt)
+    context={}
+    return x
 
 
 
@@ -431,11 +431,12 @@ def products(request):
     from_class=ProductFilter
     pro=myFilter.qs
     cateories = Category.objects.all()
-    porduct_pageinator=Paginator(pro,1)
+    brad = Product.objects.all().values('brand').distinct()
+    porduct_pageinator=Paginator(pro,15)
     page=porduct_pageinator.get_page(page_num)
     BR=Product.objects.all()
     
-    context={'product':page, 'myFilter':myFilter,'cartItems':cartItems,'cat':cateories,'br':BR}
+    context={'product':page, 'myFilter':myFilter,'cartItems':cartItems,'cat':cateories,'br':BR,'brad':brad}
     print(context)
     
     
@@ -467,11 +468,12 @@ def products(request):
         porduct_pageinator=Paginator(products,1)
         page=porduct_pageinator.get_page(page_num)
         page=porduct_pageinator.get_page(page_num)
+        brad = Product.objects.all().values('brand').distinct()
         
         
         cateories = Category.objects.all()
         BR=Product.objects.all()
-        return render(request, 'products.html', {'product':page, 'myFilter':myFilter,'cat':cateories, 'br':BR})
+        return render(request, 'products.html', {'brad':brad,'product':page, 'myFilter':myFilter,'cat':cateories, 'br':BR})
     return render(request, 'products.html', context)   
   
         
@@ -580,6 +582,8 @@ def category(request, slug=None, kt=None):
     if kt == 'brand':
         products=Product.objects.filter(brand=slug)
         page="brand"
+        cateories = Category.objects.all()
+        brad = Product.objects.all().values('brand').distinct()
         
         
     else:
@@ -588,7 +592,10 @@ def category(request, slug=None, kt=None):
         products=Product.objects.filter(category=cate.id)
         print (slug)
         page="cate"
-    return render(request, 'category.html', {'pro':products, 'page':page})
+        cateories = Category.objects.all()
+        brad = Product.objects.all().values('brand').distinct()
+
+    return render(request, 'category.html', {'pro':products,'cat':cateories,'brad':brad, 'page':page})
 
 
   

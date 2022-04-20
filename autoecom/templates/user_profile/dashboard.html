@@ -15,8 +15,7 @@
               class="fa fa-shopping-bag"></i>Orders</a>
           <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i
               class="fa fa-credit-card"></i>Message from admin</a>
-          <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i
-              class="fa fa-map-marker-alt"></i>address</a>
+       
           <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i
               class="fa fa-user"></i>Account Details</a>
           <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out-alt"></i>Logout</a>
@@ -66,21 +65,7 @@
                         </div>
                         <hr>
             
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <p class="mb-0">Address</p>
-                          </div>
-                          <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-            
-                              {{ff.state}}
-                              {{ff.city}}
-                              {{ff}}
-                              {{ff.zipcode}}
-            
-                            </p>
-                          </div>
-                        </div>
+                       
                       </div>
                     </div>
             
@@ -107,6 +92,19 @@
 
                   <div class="card-header text-white" style="background-color: #153f5b;">
                     ORDER NO. {{ order }}
+                    {% if order.status == True  %}
+                        
+                    {% if order.payment_status == True or order.cod == True  %}
+
+                    <a href="{% url 'gen_pdf' pd=order.id %}" target="_blank" class="btn btn-sm btn-success">Generate INVOICE</a>
+                    
+                    {% else %}
+                    
+                    <span style="color:red">The order was Failed hence no INVOICE</span>
+                    
+                    {% endif %}
+                    {% endif %}
+                   
                   </div>
                   {% for iteme in itemes%}
 
@@ -117,6 +115,26 @@
                       PRODUCT:<span style="color:#2980b9;">{{iteme.Product.title}} </span><br>
                       QUANTITY:<span style="color:#2980b9;">{{iteme.quantity}} </span><br>
                       PRICE:<span style="color:#2980b9;">{{ order.price }} </span>
+                      status:<span style="color:#2980b9;">
+                        {% if order.status == True  %}
+                        
+                        {% if order.payment_status == True or order.cod == True  %}
+
+                        <span style="color:green">The order was Success</span>
+
+                        {% if order.cod == True %}
+                        this was paid via COD
+                        {% else %}
+                        this was paid online
+                        {% endif %}
+
+                       
+                        {% else %}
+                        <span style="color:red">The order was Faliure</span>
+                        {% endif %}
+                        {% endif %}
+                       
+                      </span>
                     </p>
                   </div>
                   {% endif %}
@@ -158,25 +176,6 @@
           </div>
 
 
-          <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
-
-            <h4>Address</h4>
-
-            <div class="row">
-              <div class="col-md-6">
-                <h5>Payment Address</h5>
-                <p>123 Payment Street, Los Angeles, CA</p>
-                <p>Mobile: 012-345-6789</p>
-                <button class="btn">Edit Address</button>
-              </div>
-              <div class="col-md-6">
-                <h5>Shipping Address</h5>
-                <p>123 Shipping Street, Los Angeles, CA</p>
-                <p>Mobile: 012-345-6789</p>
-                <button class="btn">Edit Address</button>
-              </div>
-            </div>
-          </div>
 
 
           <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
@@ -206,21 +205,7 @@
             <br><br>
           </div>
         </div>
-        <h4>Password change</h4>
-        <div class="row">
-          <div class="col-md-12">
-            <input class="form-control" type="password" placeholder="Current Password">
-          </div>
-          <div class="col-md-6">
-            <input class="form-control" type="text" placeholder="New Password">
-          </div>
-          <div class="col-md-6">
-            <input class="form-control" type="text" placeholder="Confirm Password">
-          </div>
-          <div class="col-md-12">
-            <button class="btn">Save Changes</button>
-          </div>
-        </div>
+       
       </div>
     </div>
   </div>
@@ -229,13 +214,5 @@
 </div>
 
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-
-      {% include '../product_display.html' %}
-    </div>
-  </div>
-</div>
 
 {% endblock content %}
