@@ -36,7 +36,7 @@ urlpatterns = [
     path('support/', views.support, name='support'),
     path('contact/', views.contact, name='contact'),
 
-    path('gen_pdf/', views.gen_pdf, name='gen_pdf'),
+    path('gen_pdf/<str:pd>', views.gen_pdf, name='gen_pdf'),
     path('gen_pdf_page/', views.gen_pdf_page, name='gen_pdf_page'),
 
     path('category/<slug:slug>/<str:kt>/', views.category, name='category'),
