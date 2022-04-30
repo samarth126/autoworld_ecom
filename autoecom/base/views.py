@@ -141,11 +141,12 @@ def update_cod(request):
             en.save()
             anni=Order.objects.filter(Customer=customers, status=False).update(price=order.get_cart_total, status=True, cod=True)
             x=str(order.id)
+            lp=str(anni.Customer.first_name)
             send_mail(
         
                 
                 'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
-                'hello thank you for purchasing order id is '+x, #message
+                'dear ' + lp + ' ,hello thank you for purchasing from Autoworld, your order id is '+x,
                 'bharatautosolution81@gmail.com', #from email
                 [us], #To email
                 fail_silently=False
