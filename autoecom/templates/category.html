@@ -120,8 +120,12 @@
 
 
 
+            {% if not pro %}
+            No products available 
+            {% endif %}
 
             {% for i in pro %}
+           
                     
             <div class="product-item">
                 <div class="product-title">
@@ -231,7 +235,7 @@
         
         <ul>
             {% for p in brad %}
-            <li><a href="{% url 'category' slug=p.brand kt='b' %}">{{p.brand}}</a><span>(45)</span></li>
+            <li><a href="{% url 'category' slug=p.brand kt='brand' %}">{{p.brand}}</a><span>(45)</span></li>
             {% endfor %}
           
         </ul>

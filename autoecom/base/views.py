@@ -248,16 +248,16 @@ def handlerequest(request):
         if response_dict['RESPCODE'] == '01':
             ann=Order.objects.filter(id=x)
             anni=Order.objects.get(id=x)
+            lp=anni.Customer.first_name
             ss=anni.Customer.user
             ann.update(payment_status=True)
             trans=Transaction(order=anni, txn_id=txn_id, bank_txn_id=bank_txn_id, bank_name=bank_name, txn_amt=txn_amt, txn_date=txn_date)
             trans.save()
-            print(ss)
             send_mail(
         
                 
-                'BHARATAUTO SOLUTIONS ORDER confirmed', #subject
-                'hello thank you for purchasing order id is '+x, #message
+                'Autoworld ORDER confirmed', #subject
+                'dear ' + lp + ' ,hello thank you for purchasing from Autoworld, your order id is '+x, #message
                 'bharatautosolution81@gmail.com', #from email
                 [ss], #To email
                 fail_silently=False
@@ -321,7 +321,7 @@ def user_dash(request):
         # cust = request.user.customer
         # f = shipping_address.objects.get(Customer=cust.id)
         messages = Message.objects.filter(Customer=cust)
-        orders = Order.objects.filter(Customer=cust, status=True)
+        orders = Order.objects.filter(Customer=cust, status=True).order_by('-id')
         itemes = Order_item.objects.all()
     else:
             return redirect('loginr')
@@ -346,6 +346,7 @@ def update_acc(request):
                 lname=request.POST.get('lname')
                 phone=request.POST.get('phone')
                 cust=Customer.objects.filter(user=us).update(first_name=fname, last_name=lname)
+
                 # en=cust(first_name=fname, last_name=lname)
                 return redirect('user_profile')
 
